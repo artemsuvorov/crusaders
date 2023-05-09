@@ -7,6 +7,9 @@ public class PlayerController : MonoBehaviour
     private readonly List<UnitController> selectedUnits = new();
 
     [SerializeField]
+    private Resources resources;
+
+    [SerializeField]
     private Transform target;
 
     [SerializeField]
