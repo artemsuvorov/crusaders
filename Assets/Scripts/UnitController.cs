@@ -6,7 +6,7 @@ public class UnitController : MonoBehaviour
     private GameObject highlight;
 
     [SerializeField, Range(1.0f, 10.0f)]
-    private float speed;
+    private float speed = 1.0f;
 
     private Vector3 targetPosition;
 
