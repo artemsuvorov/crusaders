@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private Vector2 startPosition, endPosition;
+    //private Vector2 startPosition, endPosition;
     private readonly List<UnitController> selectedUnits = new();
 
     [SerializeField]
@@ -12,56 +12,23 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private Transform target;
 
-    [SerializeField]
-    private Transform selectionArea;
+    //[SerializeField]
+    //private Transform selectionArea;
 
-    private void Awake()
+    public void OnAreaSelected(SelectionEventArgs args)
     {
-        selectionArea.gameObject.SetActive(false);
+        DeselectAllUnits();
+        var colliders = Physics2D.OverlapAreaAll(args.Start, args.End);
+        SelectUnits(colliders);
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            startPosition = GetMousePositionInWorld();
-            selectionArea.gameObject.SetActive(true);
-        }
-
-        if (Input.GetMouseButton(0))
-            ResizeSelectionArea();
-
-        if (Input.GetMouseButtonUp(0))
-        {
-            DeselectAllUnits();
-            endPosition = GetMousePositionInWorld();
-            var colliders = Physics2D.OverlapAreaAll(startPosition, endPosition);
-            SelectUnits(colliders);
-            selectionArea.gameObject.SetActive(false);
-            //Debug.Log(selectedUnits.Count <= 0 ? "None" : selectedUnits.Count);
-        }
-
         if (Input.GetMouseButton(1))
         {
             MoveTargetPoint();
             MoveSelectedUnits();
         }
-    }
-
-    private void ResizeSelectionArea()
-    {
-        var currentPosition = GetMousePositionInWorld();
-
-        var minX = Mathf.Min(startPosition.x, currentPosition.x);
-        var minY = Mathf.Min(startPosition.y, currentPosition.y);
-        var maxX = Mathf.Max(startPosition.x, currentPosition.x);
-        var maxY = Mathf.Max(startPosition.y, currentPosition.y);
-
-        var lowerLeft = new Vector2(minX, minY);
-        var upperRight = new Vector2(maxX, maxY);
-
-        selectionArea.position = lowerLeft;
-        selectionArea.localScale = upperRight - lowerLeft;
     }
 
     private void SelectUnits(Collider2D[] colliders)
@@ -74,7 +41,7 @@ public class PlayerController : MonoBehaviour
 
             selectedUnits.Add(unit);
             unit.Select();
-            //Debug.Log(unit);
+            Debug.Log(unit);
         }
     }
 
