@@ -3,17 +3,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    //private Vector2 startPosition, endPosition;
     private readonly List<UnitController> selectedUnits = new();
 
     [SerializeField]
     private Resources resources;
-
-    [SerializeField]
-    private Transform target;
-
-    //[SerializeField]
-    //private Transform selectionArea;
 
     public void OnAreaSelected(SelectionEventArgs args)
     {
@@ -22,13 +15,9 @@ public class PlayerController : MonoBehaviour
         SelectUnits(colliders);
     }
 
-    private void Update()
+    public void OnTargetPointMoved(Vector2 targetPosition)
     {
-        if (Input.GetMouseButton(1))
-        {
-            MoveTargetPoint();
-            MoveSelectedUnits();
-        }
+        MoveSelectedUnitsTo(targetPosition);
     }
 
     private void SelectUnits(Collider2D[] colliders)
@@ -41,7 +30,7 @@ public class PlayerController : MonoBehaviour
 
             selectedUnits.Add(unit);
             unit.Select();
-            Debug.Log(unit);
+            //Debug.Log(unit);
         }
     }
 
@@ -52,21 +41,9 @@ public class PlayerController : MonoBehaviour
         selectedUnits.Clear();
     }
 
-    private void MoveTargetPoint()
+    private void MoveSelectedUnitsTo(Vector2 position)
     {
-        var position = GetMousePositionInWorld();
-        target.position = position;
-    }
-
-    private void MoveSelectedUnits()
-    {
-        var position = GetMousePositionInWorld();
         foreach (var unit in selectedUnits)
             unit.MoveTo(position);
-    }
-
-    private Vector2 GetMousePositionInWorld()
-    {
-        return Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 }
