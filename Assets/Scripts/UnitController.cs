@@ -3,29 +3,40 @@ using UnityEngine;
 public class UnitController : MonoBehaviour
 {
     [SerializeField]
-    private InputController inputController;
-
-    [SerializeField]
-    private Transform target;
+    private GameObject highlight;
 
     [SerializeField, Range(1.0f, 10.0f)]
-    private float speed;
+    private float speed = 1.0f;
 
-    private void Start()
+    private Vector3 targetPosition;
+
+    public void MoveTo(Vector3 position)
     {
-        inputController.Clicked += OnPointerClicked;
+        targetPosition = position;
     }
 
-    private void OnPointerClicked(Vector3 position)
+    public void Select()
     {
-        target.position = position;
+        highlight.SetActive(true);
+    }
+
+    public void Deselect()
+    {
+        highlight.SetActive(false);
+    }
+
+    private void Awake()
+    {
+        targetPosition = transform.position;
+        highlight = transform.Find("Highlight").gameObject;
+        Deselect();
     }
 
     private void Update()
     {
         var destination = Vector2.MoveTowards(
             transform.position,
-            target.position,
+            targetPosition,
             speed * Time.deltaTime
             );
 
