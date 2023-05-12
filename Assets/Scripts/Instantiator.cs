@@ -1,5 +1,22 @@
 ﻿using UnityEngine;
 
+public class InstanceEventArgs
+{
+    public Vector2 Position { get; private set; }
+
+    public GameObject Instance { get; private set; }
+
+    public InstanceEventArgs(Vector2 initialPosition, GameObject instance)
+    {
+        Position = initialPosition;
+        Instance = instance;
+    }
+
+    public InstanceEventArgs(GameObject instance)
+        : this(new Vector2(), instance)
+    { }
+}
+
 public class Instantiator : MonoBehaviour
 {
     [SerializeField]
@@ -8,19 +25,9 @@ public class Instantiator : MonoBehaviour
     [SerializeField]
     private GameObject sawmillPrefab;
 
-    public void Blueprint(BlueprintEventArgs args)
-    {
-        Instantiate(args.Blueprint);
-    }
-
-    public void Instantiate(GameObject instance)
-    {
-        Instantiate(new Vector2(0.0f, 0.0f), instance);
-    }
-
-    public void Instantiate(Vector2 position, GameObject instance)
+    public void Instantiate(InstanceEventArgs args)
     {
         var rotation = Quaternion.identity;
-        Instantiate(instance, position, rotation);
+        Instantiate(args.Instance, args.Position, rotation);
     }
 }

@@ -99,6 +99,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 1106947909538913345, guid: 8ff5737d18563914596ed8723015c7b1, type: 3}
+  Placed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!60 &2854561901988289462
 PolygonCollider2D:
   m_ObjectHideFlags: 0

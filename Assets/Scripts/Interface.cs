@@ -7,8 +7,8 @@ public class Interface : MonoBehaviour
     [SerializeField]
     private Text resourcesText;
 
-    public UnityEvent<BlueprintEventArgs> CreateBuildingButtonPressed;
-    public UnityEvent<GameObject> CreateUnitButtonReleased;
+    public UnityEvent<InstanceEventArgs> CreateBuildingButtonPressed;
+    public UnityEvent<InstanceEventArgs> CreateUnitButtonReleased;
 
     public void OnResourceIncreased(Resources resources)
     {
@@ -17,13 +17,14 @@ public class Interface : MonoBehaviour
 
     public void OnCreateBuildingButtonPressed(GameObject buildingBlueprint)
     {
-        var args = new BlueprintEventArgs(buildingBlueprint);
+        var args = new InstanceEventArgs(buildingBlueprint);
         CreateBuildingButtonPressed?.Invoke(args);
     }
 
     public void OnCreateUnitButtonReleased(GameObject unit)
     {
-        CreateUnitButtonReleased?.Invoke(unit);
+        var args = new InstanceEventArgs(unit);
+        CreateUnitButtonReleased?.Invoke(args);
     }
 
     public void OnResourceIncreaseButtonPressed(Resources resources)
