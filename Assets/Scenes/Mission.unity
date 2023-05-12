@@ -209,7 +209,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 455423909}
         m_TargetAssemblyTypeName: Interface, Assembly-CSharp
-        m_MethodName: OnCreateEntityButtonPressed
+        m_MethodName: OnCreateBuildingButtonPressed
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2854561901988289459, guid: 3b1912a0952c82c4889351af3ca8bec7, type: 3}
@@ -423,7 +423,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 455423909}
         m_TargetAssemblyTypeName: Interface, Assembly-CSharp
-        m_MethodName: OnCreateEntityButtonPressed
+        m_MethodName: OnCreateUnitButtonReleased
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 220538227500489754, guid: eeb9e493e96a5d74aaf1ae87d68c6693, type: 3}
@@ -597,7 +597,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1228971931}
         m_TargetAssemblyTypeName: Instantiator, Assembly-CSharp
-        m_MethodName: Blueprint
+        m_MethodName: Instantiate
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1790,7 +1790,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 455423909}
         m_TargetAssemblyTypeName: Interface, Assembly-CSharp
-        m_MethodName: OnCreateEntityButtonPressed
+        m_MethodName: OnCreateBuildingButtonPressed
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2854561901988289459, guid: 3b1912a0952c82c4889351af3ca8bec7, type: 3}
@@ -2067,7 +2067,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 455423909}
         m_TargetAssemblyTypeName: Interface, Assembly-CSharp
-        m_MethodName: OnCreateEntityButtonPressed
+        m_MethodName: OnCreateUnitButtonReleased
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 220538227500489754, guid: eeb9e493e96a5d74aaf1ae87d68c6693, type: 3}
