@@ -5,19 +5,52 @@ public class BlueprintController : MonoBehaviour
     [SerializeField]
     private GameObject prefab;
 
-    private readonly Color availableColor = new Color(50, 255, 0, 180);
-    private readonly Color unavailableColor = new Color(255, 3, 0, 180);
+    private bool hasCollision = false;
+
+    private SpriteRenderer spriteRenderer;
+
+    private readonly Color availableColor = Color.green;
+    private readonly Color unavailableColor = Color.red;
+
+    private void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.color = availableColor;
+    }
 
     void Update()
     {
         var position = GetMousePositionInWorld();
         transform.position = position;
 
-        if (Input.GetMouseButtonDown(0))
+        if (!hasCollision && Input.GetMouseButtonDown(0))
         {
             var rotation = Quaternion.identity;
             Instantiate(prefab, position, rotation);
             Destroy(gameObject);
+        }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Building"))
+        {
+            hasCollision = true;
+            spriteRenderer.color = unavailableColor;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Building"))
+        {
+            hasCollision = false;
+            spriteRenderer.color = availableColor;
         }
     }
 
