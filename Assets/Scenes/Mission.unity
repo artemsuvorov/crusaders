@@ -212,7 +212,7 @@ MonoBehaviour:
         m_MethodName: OnCreateEntityButtonPressed
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1106947909538913345, guid: 8ff5737d18563914596ed8723015c7b1, type: 3}
+          m_ObjectArgument: {fileID: 2854561901988289459, guid: 3b1912a0952c82c4889351af3ca8bec7, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -592,16 +592,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resourcesText: {fileID: 736950762}
-  CreateEntityButtonPressed:
+  CreateBuildingButtonPressed:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1228971931}
         m_TargetAssemblyTypeName: Instantiator, Assembly-CSharp
         m_MethodName: Blueprint
-        m_Mode: 2
+        m_Mode: 0
         m_Arguments:
-          m_ObjectArgument: {fileID: 2854561901988289455, guid: 3b1912a0952c82c4889351af3ca8bec7, type: 3}
-          m_ObjectArgumentAssemblyTypeName: BlueprintController, Assembly-CSharp
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  CreateUnitButtonReleased:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1228971931}
+        m_TargetAssemblyTypeName: Instantiator, Assembly-CSharp
+        m_MethodName: Instantiate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1778,7 +1793,7 @@ MonoBehaviour:
         m_MethodName: OnCreateEntityButtonPressed
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1106947909538913345, guid: 8ff5737d18563914596ed8723015c7b1, type: 3}
+          m_ObjectArgument: {fileID: 2854561901988289459, guid: 3b1912a0952c82c4889351af3ca8bec7, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0

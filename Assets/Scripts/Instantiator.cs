@@ -8,9 +8,9 @@ public class Instantiator : MonoBehaviour
     [SerializeField]
     private GameObject sawmillPrefab;
 
-    public void Blueprint(BlueprintController blueprint)
+    public void Blueprint(BlueprintEventArgs args)
     {
-        Instantiate(blueprint.gameObject);
+        Instantiate(args.Blueprint);
     }
 
     public void Instantiate(GameObject instance)

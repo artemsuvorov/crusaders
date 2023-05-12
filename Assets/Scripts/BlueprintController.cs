@@ -1,5 +1,21 @@
 using UnityEngine;
-using UnityEngine.Events;
+
+public class BlueprintEventArgs
+{
+    public Vector2 InitialPosition { get; private set; }
+
+    public GameObject Blueprint { get; private set; }
+
+    public BlueprintEventArgs(Vector2 initialPosition, GameObject blueprint)
+    {
+        InitialPosition = initialPosition;
+        Blueprint = blueprint;
+    }
+
+    public BlueprintEventArgs(GameObject blueprint)
+        : this(new Vector2(), blueprint)
+    { }
+}
 
 public class BlueprintController : MonoBehaviour
 {

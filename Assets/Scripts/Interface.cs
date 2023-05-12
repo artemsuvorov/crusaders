@@ -7,16 +7,23 @@ public class Interface : MonoBehaviour
     [SerializeField]
     private Text resourcesText;
 
-    public UnityEvent<GameObject> CreateEntityButtonPressed;
+    public UnityEvent<BlueprintEventArgs> CreateBuildingButtonPressed;
+    public UnityEvent<GameObject> CreateUnitButtonReleased;
 
     public void OnResourceIncreased(Resources resources)
     {
         resourcesText.text = "Resources\r\n" + resources.ToString();
     }
 
-    public void OnCreateEntityButtonPressed(GameObject entity)
+    public void OnCreateBuildingButtonPressed(GameObject buildingBlueprint)
     {
-        CreateEntityButtonPressed?.Invoke(entity);
+        var args = new BlueprintEventArgs(buildingBlueprint);
+        CreateBuildingButtonPressed?.Invoke(args);
+    }
+
+    public void OnCreateUnitButtonReleased(GameObject unit)
+    {
+        CreateUnitButtonReleased?.Invoke(unit);
     }
 
     public void OnResourceIncreaseButtonPressed(Resources resources)
