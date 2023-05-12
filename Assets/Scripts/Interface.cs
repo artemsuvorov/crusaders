@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class Interface : MonoBehaviour
@@ -6,34 +7,40 @@ public class Interface : MonoBehaviour
     [SerializeField]
     private Text resourcesText;
 
-    [SerializeField]
-    private UnitController unitPrefab;
+    public UnityEvent CreateWorkerButtonPressed;
+    public UnityEvent CreateKnightButtonPressed;
 
-    public void OnResourceIncreaseButtonPressed(Resources resources)
-    {
-        resources.IncreaseResource(Resource.Wood, 100);
-        resources.IncreaseResource(Resource.Stone, 100);
-    }
-
-    public void OnCreateWorkerButtonPressed()
-    {
-        InstantiateUnit();
-    } 
-
-    public void OnCreateKnightButtonPressed()
-    {
-        InstantiateUnit();
-    }
+    public UnityEvent CreateSawmillButtonPressed;
+    public UnityEvent CreateQuarryButtonPressed;
 
     public void OnResourceIncreased(Resources resources)
     {
         resourcesText.text = "Resources\r\n" + resources.ToString();
     }
 
-    private void InstantiateUnit()
+    public void OnCreateWorkerButtonPressed()
     {
-        var position = new Vector3(0.0f, 0.0f);
-        var rotation = Quaternion.identity;
-        Instantiate(unitPrefab, position, rotation);
+        CreateWorkerButtonPressed?.Invoke();
+    }
+
+    public void OnCreateKnightButtonPressed()
+    {
+        CreateKnightButtonPressed?.Invoke();
+    }
+
+    public void OnCreateSawmillButtonPressed()
+    {
+        CreateSawmillButtonPressed?.Invoke();
+    }
+
+    public void OnCreateQuarryButtonPressed()
+    {
+        CreateQuarryButtonPressed?.Invoke();
+    }
+
+    public void OnResourceIncreaseButtonPressed(Resources resources)
+    {
+        resources.IncreaseResource(Resource.Wood, 100);
+        resources.IncreaseResource(Resource.Stone, 100);
     }
 }
