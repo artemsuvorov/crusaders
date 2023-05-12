@@ -8,10 +8,19 @@ public class Instantiator : MonoBehaviour
     [SerializeField]
     private GameObject sawmillPrefab;
 
-    public void InstantiateUnit()
+    public void Blueprint(BlueprintController blueprint)
     {
-        var position = new Vector3(0.0f, 0.0f);
+        Instantiate(blueprint.gameObject);
+    }
+
+    public void Instantiate(GameObject instance)
+    {
+        Instantiate(new Vector2(0.0f, 0.0f), instance);
+    }
+
+    public void Instantiate(Vector2 position, GameObject instance)
+    {
         var rotation = Quaternion.identity;
-        Instantiate(unitPrefab, position, rotation);
+        Instantiate(instance, position, rotation);
     }
 }

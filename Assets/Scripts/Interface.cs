@@ -7,35 +7,16 @@ public class Interface : MonoBehaviour
     [SerializeField]
     private Text resourcesText;
 
-    public UnityEvent CreateWorkerButtonPressed;
-    public UnityEvent CreateKnightButtonPressed;
-
-    public UnityEvent CreateSawmillButtonPressed;
-    public UnityEvent CreateQuarryButtonPressed;
+    public UnityEvent<GameObject> CreateEntityButtonPressed;
 
     public void OnResourceIncreased(Resources resources)
     {
         resourcesText.text = "Resources\r\n" + resources.ToString();
     }
 
-    public void OnCreateWorkerButtonPressed()
+    public void OnCreateEntityButtonPressed(GameObject entity)
     {
-        CreateWorkerButtonPressed?.Invoke();
-    }
-
-    public void OnCreateKnightButtonPressed()
-    {
-        CreateKnightButtonPressed?.Invoke();
-    }
-
-    public void OnCreateSawmillButtonPressed()
-    {
-        CreateSawmillButtonPressed?.Invoke();
-    }
-
-    public void OnCreateQuarryButtonPressed()
-    {
-        CreateQuarryButtonPressed?.Invoke();
+        CreateEntityButtonPressed?.Invoke(entity);
     }
 
     public void OnResourceIncreaseButtonPressed(Resources resources)
