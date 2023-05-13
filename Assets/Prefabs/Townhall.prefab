@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6950769583760742629}
   - component: {fileID: 7670131354568608830}
   - component: {fileID: 7226235358120442236}
+  - component: {fileID: -4403615757218930210}
   m_Layer: 0
   m_Name: Townhall
   m_TagString: Building
@@ -148,3 +149,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   createPositionOffset: {x: -4.4, y: -5.6}
   unitPrefab: {fileID: 220538227500489754, guid: eeb9e493e96a5d74aaf1ae87d68c6693, type: 3}
+--- !u!114 &-4403615757218930210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106947909538913345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
