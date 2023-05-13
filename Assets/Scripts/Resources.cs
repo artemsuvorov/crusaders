@@ -9,6 +9,19 @@ public enum Resource
     Stone
 }
 
+public class ResourceEventArgs
+{
+    public Resource Resource { get; private set; }
+
+    public int Amount { get; private set; }
+
+    public ResourceEventArgs(Resource resource, int amount)
+    {
+        Resource = resource;
+        Amount = amount;
+    }
+}
+
 public class Resources : MonoBehaviour
 {
     private readonly Dictionary<Resource, int> values = new();
