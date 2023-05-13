@@ -212,7 +212,7 @@ MonoBehaviour:
         m_MethodName: OnCreateBuildingButtonPressed
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 2854561901988289459, guid: 3b1912a0952c82c4889351af3ca8bec7, type: 3}
+          m_ObjectArgument: {fileID: 7586866914108808460, guid: 35737c92ad0e9fc44b9610b5e8c5feb1, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0

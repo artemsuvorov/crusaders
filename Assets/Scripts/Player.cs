@@ -20,6 +20,11 @@ public class Player : MonoBehaviour
         squad.MoveUnitsTo(targetPosition);
     }
 
+    public void OnEntityCreated(InstanceEventArgs args)
+    {
+        instantiator.Instantiate(args.Instance, args.Position);
+    }
+
     public void OnEntityBlueprinting(InstanceEventArgs args)
     {
         var blueprintInstance =
@@ -28,11 +33,6 @@ public class Player : MonoBehaviour
             .GetComponentInParent<BlueprintController>();
         if (blueprintController is not null)
             blueprintController.Placed += OnBlueprintPlaced;
-    }
-
-    public void OnEntityCreated(InstanceEventArgs args)
-    {
-        instantiator.Instantiate(args.Instance, args.Position);
     }
 
     private void OnBlueprintPlaced(InstanceEventArgs args)
