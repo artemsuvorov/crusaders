@@ -2,13 +2,14 @@ using UnityEngine;
 
 public class UnitController : MonoBehaviour
 {
-    [SerializeField]
     private GameObject highlight;
 
     [SerializeField, Range(1.0f, 10.0f)]
     private float speed = 1.0f;
 
     private Vector3 targetPosition;
+
+    private Animator animator;
 
     public void MoveTo(Vector3 position)
     {
@@ -27,6 +28,8 @@ public class UnitController : MonoBehaviour
 
     private void Awake()
     {
+        animator = GetComponentInChildren<Animator>();
+
         targetPosition = transform.position;
         highlight = transform.Find("Highlight").gameObject;
         Deselect();
@@ -41,5 +44,15 @@ public class UnitController : MonoBehaviour
             );
 
         transform.position = destination;
+
+        Animate();
+    }
+
+    private void Animate()
+    {
+        if (transform.position != targetPosition)
+            animator.SetFloat("Speed", speed);
+        else
+            animator.SetFloat("Speed", 0.0f);
     }
 }
