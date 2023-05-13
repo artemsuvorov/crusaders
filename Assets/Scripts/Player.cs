@@ -38,8 +38,14 @@ public class Player : MonoBehaviour
     private void OnBlueprintPlaced(InstanceEventArgs args)
     {
         var instance = instantiator.Instantiate(args.Instance, args.Position);
-        var building = instance.GetComponent<ResourceBuildingController>();
-        building.ResourceProduced += (produceArgs) => 
-            resources.IncreaseResource(produceArgs.Resource, produceArgs.Amount);
+
+        var resourceBuilding = instance.GetComponent<ResourceBuildingController>();
+        if (resourceBuilding is not null)
+            resourceBuilding.ResourceProduced += (resourceArgs) => 
+                resources.IncreaseResource(resourceArgs.Resource, resourceArgs.Amount);
+
+        var unitBuilding = instance.GetComponent<UnitBuildingController>();
+        if (unitBuilding is not null)
+            unitBuilding.UnitCreated += (unitArgs) => OnEntityCreated(unitArgs);
     }
 }
