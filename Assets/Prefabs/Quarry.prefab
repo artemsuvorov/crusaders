@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 460286477106223528}
   - component: {fileID: 893009963525786995}
   - component: {fileID: 3555539832586657679}
+  - component: {fileID: -489345040555457989}
   m_Layer: 0
   m_Name: Quarry
   m_TagString: Building
@@ -146,3 +147,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95dc2630c71293145b438367cb4bf7b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-489345040555457989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7586866914108808460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff

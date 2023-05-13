@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 public class InstanceEventArgs
 {
@@ -20,9 +21,13 @@ public class InstanceEventArgs
 // TODO: maybe there is no need in this class
 public class Instantiator : MonoBehaviour
 {
+    public UnityEvent Instantiated;
+
     public GameObject Instantiate(GameObject instance, Vector2 position)
     {
         var rotation = Quaternion.identity;
-        return Instantiate(instance, position, rotation);
+        var newInstance = Instantiate(instance, position, rotation);
+        Instantiated?.Invoke();
+        return newInstance;
     }
 }

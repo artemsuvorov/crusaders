@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class UnitController : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class UnitController : MonoBehaviour
 
     private Vector3 targetPosition;
 
+    private NavMeshAgent agent;
     private Animator animator;
 
     public void MoveTo(Vector3 position)
@@ -26,6 +28,13 @@ public class UnitController : MonoBehaviour
         highlight.SetActive(false);
     }
 
+    private void Start()
+    {
+        agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
+    }
+
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
@@ -37,13 +46,21 @@ public class UnitController : MonoBehaviour
 
     private void Update()
     {
-        var destination = Vector2.MoveTowards(
-            transform.position,
-            targetPosition,
-            speed * Time.deltaTime
+        //var destination = Vector2.MoveTowards(
+        //    transform.position,
+        //    targetPosition,
+        //    speed * Time.deltaTime
+        //    );
+
+        //transform.position = destination;
+
+        var destination = new Vector3(
+            targetPosition.x, 
+            targetPosition.y, 
+            transform.position.z
             );
 
-        transform.position = destination;
+        agent.SetDestination(destination);
 
         Animate();
     }
