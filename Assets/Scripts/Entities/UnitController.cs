@@ -46,14 +46,6 @@ public class UnitController : MonoBehaviour
 
     private void Update()
     {
-        //var destination = Vector2.MoveTowards(
-        //    transform.position,
-        //    targetPosition,
-        //    speed * Time.deltaTime
-        //    );
-
-        //transform.position = destination;
-
         var destination = new Vector3(
             targetPosition.x, 
             targetPosition.y, 
@@ -67,7 +59,7 @@ public class UnitController : MonoBehaviour
 
     private void Animate()
     {
-        if (transform.position != targetPosition)
+        if (agent.velocity.magnitude > 0.0f)
             animator.SetFloat("Speed", speed);
         else
             animator.SetFloat("Speed", 0.0f);
