@@ -17,17 +17,12 @@ public class InstanceEventArgs
     { }
 }
 
+// TODO: maybe there is no need in this class
 public class Instantiator : MonoBehaviour
 {
-    [SerializeField]
-    private UnitController unitPrefab;
-
-    [SerializeField]
-    private GameObject sawmillPrefab;
-
-    public void Instantiate(InstanceEventArgs args)
+    public GameObject Instantiate(GameObject instance, Vector2 position)
     {
         var rotation = Quaternion.identity;
-        Instantiate(args.Instance, args.Position, rotation);
+        return Instantiate(instance, position, rotation);
     }
 }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1106947909538913346}
   - component: {fileID: 6950769583760742629}
   - component: {fileID: 7670131354568608830}
+  - component: {fileID: 2787091184178982752}
   m_Layer: 0
   m_Name: Sawmill
   m_TagString: Building
@@ -133,3 +134,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.3243272, y: 3.296855}
   m_EdgeRadius: 0
+--- !u!114 &2787091184178982752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106947909538913345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e690362458652d448a0a064840e7a673, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ResourceProduced:
+    m_PersistentCalls:
+      m_Calls: []

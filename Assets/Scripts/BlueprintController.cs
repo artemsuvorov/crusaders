@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BlueprintController : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class BlueprintController : MonoBehaviour
 
     private readonly Color availableColor = Color.green;
     private readonly Color unavailableColor = Color.red;
+
+    public event UnityAction<InstanceEventArgs> Placed;
 
     private void Awake()
     {
@@ -25,9 +28,11 @@ public class BlueprintController : MonoBehaviour
 
         if (!hasCollision && Input.GetMouseButtonDown(0))
         {
-            var rotation = Quaternion.identity;
-            Instantiate(prefab, position, rotation);
+            //var rotation = Quaternion.identity;
+            //Instantiate(prefab, position, rotation);
             Destroy(gameObject);
+            var args = new InstanceEventArgs(position, prefab);
+            Placed?.Invoke(args);
         }
 
         if (Input.GetMouseButtonDown(1))
