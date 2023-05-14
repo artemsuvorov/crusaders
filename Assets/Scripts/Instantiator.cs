@@ -21,13 +21,16 @@ public class InstanceEventArgs
 // TODO: maybe there is no need in this class
 public class Instantiator : MonoBehaviour
 {
-    public UnityEvent Instantiated;
+    public UnityEvent<InstanceEventArgs> Instantiated;
 
     public GameObject Instantiate(GameObject instance, Vector2 position)
     {
         var rotation = Quaternion.identity;
         var newInstance = Instantiate(instance, position, rotation);
-        Instantiated?.Invoke();
+
+        var args = new InstanceEventArgs(position, newInstance);
+        Instantiated?.Invoke(args);
+
         return newInstance;
     }
 }

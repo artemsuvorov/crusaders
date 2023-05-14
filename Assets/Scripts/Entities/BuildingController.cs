@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public abstract class BuildingController : MonoBehaviour
+public abstract class BuildingController : EntityController
 {
 
 }

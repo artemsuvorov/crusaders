@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class UnitController : MonoBehaviour
+public class UnitController : EntityController
 {
     private GameObject highlight;
 
@@ -46,6 +46,9 @@ public class UnitController : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.P))
+            TakeDamage(10);
+
         var destination = new Vector3(
             targetPosition.x, 
             targetPosition.y, 

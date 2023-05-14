@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 7586866914108808463}
   - component: {fileID: 460286477106223528}
   - component: {fileID: 893009963525786995}
-  - component: {fileID: 3555539832586657679}
   - component: {fileID: 1420447922372904510}
   m_Layer: 0
   m_Name: Quarry Blueprint
@@ -135,18 +134,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.9078715, y: 2.9942763}
   m_EdgeRadius: 0
---- !u!114 &3555539832586657679
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7586866914108808460}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95dc2630c71293145b438367cb4bf7b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1420447922372904510
 MonoBehaviour:
   m_ObjectHideFlags: 0
