@@ -19,11 +19,15 @@ public class UnitController : EntityController
 
     public void MoveTo(Vector3 position)
     {
+        if (!Alive)
+            return;
         targetPosition = position;
     }
 
     public void Attack(EntityController closest)
     {
+        if (!Alive)
+            return;
         closest.TakeDamage(damage);
     }
 
