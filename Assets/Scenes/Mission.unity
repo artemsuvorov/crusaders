@@ -1981,7 +1981,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 455423909}
         m_TargetAssemblyTypeName: Interface, Assembly-CSharp
-        m_MethodName: IncreaseResource
+        m_MethodName: OnResourceIncreased
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
