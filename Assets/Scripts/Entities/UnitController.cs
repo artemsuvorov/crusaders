@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,6 +9,9 @@ public class UnitController : EntityController
     [SerializeField, Range(1.0f, 10.0f)]
     private float speed = 1.0f;
 
+    [SerializeField, Range(0.0f, 100.0f)]
+    private float damage = 10.0f;
+
     private Vector3 targetPosition;
 
     private NavMeshAgent agent;
@@ -16,6 +20,11 @@ public class UnitController : EntityController
     public void MoveTo(Vector3 position)
     {
         targetPosition = position;
+    }
+
+    public void Attack(EntityController closest)
+    {
+        closest.TakeDamage(damage);
     }
 
     public void Select()

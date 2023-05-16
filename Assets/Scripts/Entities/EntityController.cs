@@ -30,9 +30,12 @@ public class EntityController : MonoBehaviour
 {
     private readonly Health health = new();
 
+    public float Health => health.Value;
+    public bool Alive => Health > 0;
+
     public UnityAction<HealthEventArgs> HealthChanged;
 
-    protected void TakeDamage(float amount)
+    public void TakeDamage(float amount)
     {
         health.Value -= amount;
         var args = new HealthEventArgs(health.Value, health.Max);
