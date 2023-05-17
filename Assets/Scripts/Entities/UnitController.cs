@@ -21,6 +21,7 @@ public class UnitController : EntityController
     {
         if (!Alive)
             return;
+        agent.isStopped = false;
         targetPosition = position;
     }
 
@@ -28,7 +29,9 @@ public class UnitController : EntityController
     {
         if (!Alive)
             return;
+        StopMovement();
         closest.TakeDamage(damage);
+        animator.SetTrigger("Attack");
     }
 
     public void Select()
@@ -41,15 +44,18 @@ public class UnitController : EntityController
         highlight.SetActive(false);
     }
 
-    private void Start()
+    protected override void OnDead()
     {
-        agent = GetComponent<NavMeshAgent>();
-        agent.updateRotation = false;
-        agent.updateUpAxis = false;
+        base.OnDead();
+        StopMovement();
     }
 
     private void Awake()
     {
+        agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
+
         animator = GetComponentInChildren<Animator>();
 
         targetPosition = transform.position;
@@ -68,16 +74,25 @@ public class UnitController : EntityController
             transform.position.z
             );
 
-        agent.SetDestination(destination);
+        if (Alive)
+            agent.SetDestination(destination);
 
         Animate();
     }
 
     private void Animate()
     {
+        animator.SetBool("Alive", Alive);
+
         if (agent.velocity.magnitude > 0.0f)
             animator.SetFloat("Speed", speed);
         else
             animator.SetFloat("Speed", 0.0f);
+    }
+
+    private void StopMovement()
+    {
+        agent.isStopped = true;
+        targetPosition = transform.position;
     }
 }

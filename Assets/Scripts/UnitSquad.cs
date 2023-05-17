@@ -14,7 +14,7 @@ public class UnitSquad
         foreach (var collider in colliders)
         {
             var unit = collider.GetComponent<UnitController>();
-            if (unit is null)
+            if (unit is null || !unit.Alive)
                 continue;
 
             selectedUnits.Add(unit);

@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    private const float CloseDistance = 2.0f;
+    private const float UnitAttackRange = 1.0f;
+    private const float BuildingAttackRange = 2.0f;
 
     [SerializeField]
     private Instantiator instantiator;
@@ -25,12 +26,24 @@ public class Enemy : MonoBehaviour
         var entities = FindObjectsOfType<EntityController>();
         foreach (var unit in units)
         {
+            if (!unit.Alive)
+                continue;
             var closest = GetClosestAliveEntity(unit, entities);
-            if (closest && Distance(unit, closest) <= CloseDistance)
-                unit.Attack(closest);
-            else if (closest)
-                unit.MoveTo(closest.transform.position);
+            if (closest)
+                MoveAndAttack(unit, closest);
         }
+    }
+
+    private void MoveAndAttack(UnitController unit, EntityController closest)
+    {
+        var distance = Distance(unit, closest);
+        // TODO: make more generic via enitity.Size property
+        if (closest is UnitController && distance <= UnitAttackRange)
+            unit.Attack(closest);
+        else if (closest is BuildingController && distance <= BuildingAttackRange)
+            unit.Attack(closest);
+        else
+            unit.MoveTo(closest.Position);
     }
 
     private EntityController GetClosestAliveEntity(
@@ -55,10 +68,7 @@ public class Enemy : MonoBehaviour
 
     private float Distance(EntityController entity1, EntityController entity2)
     {
-        return Vector2.Distance(
-            entity1.transform.position,
-            entity2.transform.position
-            );
+        return Vector2.Distance(entity1.Position, entity2.Position);
     }
 
 }
