@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -12,7 +13,27 @@ public class Player : MonoBehaviour
 
     public void OnAreaSelected(SelectionEventArgs args)
     {
-        squad.SelectUnitsInArea(args.Start, args.End);
+        if (args.MouseButton == MouseButton.Left)
+        {
+            squad.SelectUnitsInArea(args.Start, args.End);
+        }
+        else if (args.MouseButton == MouseButton.Right)
+        {
+            var attackTarget = SelectAttackTargetInArea(args.Start, args.End);
+            if (attackTarget)
+                squad.MoveUnitsAndAttack(attackTarget);
+        }
+    }
+
+    private EntityController SelectAttackTargetInArea(Vector2 start, Vector2 end)
+    {
+        var collider = Physics2D.OverlapArea(start, end);
+        if (collider is null)
+            return null;
+        var entity = collider.GetComponent<EntityController>();
+        if (entity is null || !entity.Alive)
+            return null;
+        return entity;
     }
 
     public void OnTargetPointMoved(Vector2 targetPosition)

@@ -1,14 +1,23 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+public enum MouseButton
+{
+    Left,
+    Right,
+    Middle
+}
+
 public class SelectionEventArgs
 {
+    public MouseButton MouseButton { get; private set; }
+    
     public Vector2 Start { get; private set; }
-
     public Vector2 End { get; private set; }
 
-    public SelectionEventArgs(Vector2 start, Vector2 end)
+    public SelectionEventArgs(MouseButton button, Vector2 start, Vector2 end)
     {
+        MouseButton = button;
         Start = start;
         End = end;
     }
@@ -42,7 +51,14 @@ public class SelectionController : MonoBehaviour
         {
             end = GetMousePositionInWorld();
             sprite.SetActive(false);
-            var args = new SelectionEventArgs(start, end);
+            var args = new SelectionEventArgs(MouseButton.Left, start, end);
+            AreaSelected?.Invoke(args);
+        }
+
+        if (Input.GetMouseButtonUp(1))
+        {
+            var position = GetMousePositionInWorld();
+            var args = new SelectionEventArgs(MouseButton.Right, position, position);
             AreaSelected?.Invoke(args);
         }
     }

@@ -1,8 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// TODO: abstract out common code in UnitSquad and Enemy classes
 public class UnitSquad
 {
+    private const float UnitAttackRange = 1.0f;
+    private const float BuildingAttackRange = 2.0f;
+
+    // TODO: change class to HashSet<UnitController>
     private readonly List<UnitController> selectedUnits = new();
 
     public void SelectUnitsInArea(Vector2 start, Vector2 end)
@@ -32,6 +37,29 @@ public class UnitSquad
             var unit = selectedUnits[i];
             unit.MoveTo(positions[i % positions.Count]);
         }
+    }
+
+    public void MoveUnitsAndAttack(EntityController target)
+    {
+        foreach (var unit in selectedUnits)
+        {
+            if (!unit.Alive)
+                return;
+            if (unit != target)
+                MoveUnitAndAttack(unit, target);
+        }
+    }
+
+    private void MoveUnitAndAttack(UnitController unit, EntityController target)
+    {
+        var distance = Distance(unit, target);
+        // TODO: make more generic via enitity.Size property
+        if (target is UnitController && distance <= UnitAttackRange)
+            unit.Attack(target);
+        else if (target is BuildingController && distance <= BuildingAttackRange)
+            unit.Attack(target);
+        else
+            unit.MoveTo(target.Position);
     }
 
     private void DeselectAllUnits()
@@ -72,6 +100,11 @@ public class UnitSquad
         }
 
         return positions;
+    }
+
+    private float Distance(EntityController entity1, EntityController entity2)
+    {
+        return Vector2.Distance(entity1.Position, entity2.Position);
     }
 
     private Vector2 RotateVector(Vector2 vector, float angle)

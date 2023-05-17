@@ -30,20 +30,20 @@ public class Enemy : MonoBehaviour
                 continue;
             var closest = GetClosestHostileEntity(unit, entities);
             if (closest)
-                MoveAndAttack(unit, closest);
+                MoveUnitAndAttack(unit, closest);
         }
     }
 
-    private void MoveAndAttack(UnitController unit, EntityController closest)
+    private void MoveUnitAndAttack(UnitController unit, EntityController target)
     {
-        var distance = Distance(unit, closest);
+        var distance = Distance(unit, target);
         // TODO: make more generic via enitity.Size property
-        if (closest is UnitController && distance <= UnitAttackRange)
-            unit.Attack(closest);
-        else if (closest is BuildingController && distance <= BuildingAttackRange)
-            unit.Attack(closest);
+        if (target is UnitController && distance <= UnitAttackRange)
+            unit.Attack(target);
+        else if (target is BuildingController && distance <= BuildingAttackRange)
+            unit.Attack(target);
         else
-            unit.MoveTo(closest.Position);
+            unit.MoveTo(target.Position);
     }
 
     private EntityController GetClosestHostileEntity(
@@ -75,5 +75,4 @@ public class Enemy : MonoBehaviour
     {
         return Vector2.Distance(entity1.Position, entity2.Position);
     }
-
 }
