@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -11,6 +12,8 @@ public class UnitController : EntityController
 
     [SerializeField, Range(0.0f, 100.0f)]
     private float damage = 10.0f;
+
+    private bool attacking = false;
 
     private Vector3 targetPosition;
 
@@ -29,9 +32,23 @@ public class UnitController : EntityController
     {
         if (!Alive)
             return;
+        var routine = AttackRoutine(closest);
+        StartCoroutine(routine);
+    }
+
+    private IEnumerator<YieldInstruction> AttackRoutine(EntityController closest)
+    {
+        if (attacking)
+            yield break;
+        
+        attacking = true;
         StopMovement();
-        closest.TakeDamage(damage);
         animator.SetTrigger("Attack");
+        yield return new WaitForSeconds(0.5f);
+
+        closest.TakeDamage(damage);
+        yield return new WaitForSeconds(0.4f);
+        attacking = false;
     }
 
     public void Select()
