@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private GameObject unitPrefab;
 
-    private List<UnitController> units = new();
+    private HashSet<UnitController> units = new();
 
     private void Update()
     {
@@ -28,7 +28,7 @@ public class Enemy : MonoBehaviour
         {
             if (!unit.Alive)
                 continue;
-            var closest = GetClosestAliveEntity(unit, entities);
+            var closest = GetClosestHostileEntity(unit, entities);
             if (closest)
                 MoveAndAttack(unit, closest);
         }
@@ -46,7 +46,7 @@ public class Enemy : MonoBehaviour
             unit.MoveTo(closest.Position);
     }
 
-    private EntityController GetClosestAliveEntity(
+    private EntityController GetClosestHostileEntity(
         UnitController unit, EntityController[] entities)
     {
         EntityController closest = null;
@@ -54,7 +54,7 @@ public class Enemy : MonoBehaviour
         
         foreach (var entity in entities)
         {
-            if (unit == entity || !entity.Alive)
+            if (unit == entity || !entity.Alive || IsAlly(entity))
                 continue;
             var distance = Distance(unit, entity);
             if (distance >= minDistance)
@@ -64,6 +64,11 @@ public class Enemy : MonoBehaviour
         }
 
         return closest;
+    }
+
+    private bool IsAlly(EntityController entity)
+    {
+        return entity is UnitController otherUnit && units.Contains(otherUnit);
     }
 
     private float Distance(EntityController entity1, EntityController entity2)
