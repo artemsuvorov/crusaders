@@ -17,12 +17,21 @@ public class Player : MonoBehaviour
 
     public void OnTargetPointMoved(Vector2 targetPosition)
     {
-        squad.MoveUnitsTo(targetPosition);
+        squad.MoveUnitsAndAutoAttack(targetPosition);
+        //squad.MoveUnitsTo(targetPosition);
+        //squad.AutoAttackClosestTargetAt(targetPosition);
     }
 
     public void OnEntityCreated(InstanceEventArgs args)
     {
         instantiator.Instantiate(args.Instance, args.Position);
+    }
+
+    public void OnEntityDied(InstanceEventArgs args)
+    {
+        var unit = args.Instance.GetComponent<UnitController>();
+        if (unit is not null)
+            unit.Died += () => squad.Deselect(unit);
     }
 
     public void OnEntityBlueprinting(InstanceEventArgs args)

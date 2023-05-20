@@ -16,6 +16,8 @@ public abstract class UnitBuildingController : BuildingController
 
     protected void CreateUnit()
     {
+        if (!Alive)
+            return;
         var position = (Vector2)transform.position + createPositionOffset;
         var args = new InstanceEventArgs(position, unitPrefab);
         UnitCreated?.Invoke(args);

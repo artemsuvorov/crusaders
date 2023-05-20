@@ -6,7 +6,8 @@ using UnityEngine.Events;
 public enum Resource
 {
     Wood,
-    Stone
+    Stone,
+
 }
 
 public class ResourceEventArgs

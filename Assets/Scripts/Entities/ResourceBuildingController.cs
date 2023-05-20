@@ -12,6 +12,8 @@ public abstract class ResourceBuildingController : BuildingController
 
     protected void IncreaseResource()
     {
+        if (!Alive)
+            return;
         var args = new ResourceEventArgs(Resource, Amount);
         ResourceProduced?.Invoke(args);
     }

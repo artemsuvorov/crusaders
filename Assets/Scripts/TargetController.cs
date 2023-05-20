@@ -5,6 +5,7 @@ public class TargetController : MonoBehaviour
 {
     private GameObject sprite;
 
+    public UnityEvent<Vector2> Pinned;
     public UnityEvent<Vector2> Moved;
 
     private void Awake()
@@ -16,10 +17,13 @@ public class TargetController : MonoBehaviour
     private void Update()
     {
         if (Input.GetMouseButtonDown(1))
+        {
             sprite.SetActive(true);
-
-        if (Input.GetMouseButton(1))
             MoveTargetPoint();
+        }
+
+        //if (Input.GetMouseButton(1))
+        //    MoveTargetPoint();
     }
 
     private void MoveTargetPoint()
