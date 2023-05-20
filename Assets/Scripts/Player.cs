@@ -8,7 +8,14 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Instantiator instantiator;
 
-    private readonly UnitSquad squad = new();
+    private readonly Faction faction;
+    private readonly UnitSquad squad;
+
+    public Player()
+    {
+        faction = new Faction(FactionName.English);
+        squad = new UnitSquad(faction);
+    }
 
     public void OnAreaSelected(SelectionEventArgs args)
     {
@@ -24,7 +31,10 @@ public class Player : MonoBehaviour
 
     public void OnEntityCreated(InstanceEventArgs args)
     {
-        instantiator.Instantiate(args.Instance, args.Position);
+        var instance = instantiator.Instantiate(args.Instance, args.Position);
+        var entity = instance.GetComponent<EntityController>();
+        if (entity)
+            faction.AddAlly(entity);
     }
 
     public void OnEntityDied(InstanceEventArgs args)

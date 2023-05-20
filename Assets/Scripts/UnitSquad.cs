@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class UnitSquad
 {
-    private readonly HashSet<UnitController> selectedUnits = new();
+    private readonly Faction faction;
+    private readonly HashSet<UnitController> selectedUnits;
+
+    public UnitSquad(Faction faction)
+    {
+        this.faction = faction;
+        selectedUnits = new HashSet<UnitController>();
+    }
 
     public void SelectUnitsInArea(Vector2 start, Vector2 end)
     {
@@ -25,7 +32,7 @@ public class UnitSquad
     public void MoveUnitsAndAutoAttack(Vector2 position)
     {
         var target = SelectClosestAttackTargetAround(position);
-        if (target is null || IsAlly(target))
+        if (target is null || faction.ConstainsAlly(target))
             MoveUnitsTo(position);
         else
             SelectAttackTarget(target);
@@ -59,11 +66,6 @@ public class UnitSquad
         }
     }
 
-    private bool IsAlly(EntityController entity)
-    {
-        return entity is UnitController unit && selectedUnits.Contains(unit);
-    }
-
     private void DeselectAllUnits()
     {
         foreach (var unit in selectedUnits)
@@ -83,7 +85,7 @@ public class UnitSquad
         var candidate = colliders.FirstOrDefault(e =>
         {
             var entity = e.GetComponent<EntityController>();
-            return entity is not null && !IsAlly(entity);
+            return entity is not null && !faction.ConstainsAlly(entity);
         });
         if (candidate is null)
             return null;
