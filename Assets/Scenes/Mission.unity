@@ -1003,7 +1003,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 25, y: -14.999939}
+  m_AnchoredPosition: {x: 25, y: -15}
   m_SizeDelta: {x: -50, y: -30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &736950762
@@ -1177,6 +1177,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 918d9e34c1bdfa941a755e14cd242ec4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Pinned:
+    m_PersistentCalls:
+      m_Calls: []
   Moved:
     m_PersistentCalls:
       m_Calls:
@@ -1591,6 +1594,18 @@ MonoBehaviour:
       - m_Target: {fileID: 455423909}
         m_TargetAssemblyTypeName: Interface, Assembly-CSharp
         m_MethodName: OnEntityCreated
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2109041736}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: OnEntityDied
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

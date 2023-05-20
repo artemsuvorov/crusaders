@@ -5,8 +5,6 @@ using UnityEngine.AI;
 
 public class UnitController : EntityController
 {
-    private GameObject highlight;
-
     [SerializeField, Range(1.0f, 10.0f)]
     private float speed = 1.0f;
 
@@ -16,9 +14,19 @@ public class UnitController : EntityController
     private bool attacking = false;
 
     private Vector3 targetPosition;
+    private EntityController attackTarget;
 
+    private GameObject highlight;
     private NavMeshAgent agent;
     private Animator animator;
+
+    public bool Selectable { get; set; } = true;
+
+    public bool Selected
+    { 
+        get => Selectable && highlight.activeSelf;
+        set => highlight.SetActive(Selectable && value);
+    }
 
     public void MoveTo(Vector3 position)
     {
@@ -26,49 +34,40 @@ public class UnitController : EntityController
             return;
         agent.isStopped = false;
         targetPosition = position;
+        //if (Selectable && Selected)
+        //    Debug.Log("move position: " + targetPosition);
     }
 
-    public void Attack(EntityController closest)
+    public void MoveTo(EntityController target)
+    {
+        // TODO: fix close position make realtive to current position of unit
+        var closePosition = target.Position - 
+            0.5f * target.Size.magnitude * target.Position.normalized;
+        if (DistanceTo(target) <= Vector2.Distance(target.Position, closePosition))
+            return;
+        MoveTo(closePosition);
+    }
+
+    public void SelectAttackTarget(EntityController target)
     {
         if (!Alive)
             return;
-        var routine = AttackRoutine(closest);
-        StartCoroutine(routine);
+        attackTarget = target;
+        //Debug.Log("target selected: " + target);
     }
 
-    private IEnumerator<YieldInstruction> AttackRoutine(EntityController closest)
+    public void DeselectAttackTarget()
     {
-        if (attacking)
-            yield break;
-        
-        attacking = true;
-        StopMovement();
-        animator.SetTrigger("Attack");
-        yield return new WaitForSeconds(0.5f);
-
-        closest.TakeDamage(damage);
-        yield return new WaitForSeconds(0.4f);
-        attacking = false;
-    }
-
-    public void Select()
-    {
-        highlight.SetActive(true);
-    }
-
-    public void Deselect()
-    {
-        highlight.SetActive(false);
-    }
-
-    protected override void OnDead()
-    {
-        base.OnDead();
-        StopMovement();
+        if (!Alive)
+            return;
+        attackTarget = null;
+        //Debug.Log("target deselected");
     }
 
     private void Awake()
     {
+        Died += () => StopMovement();
+
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
@@ -77,13 +76,19 @@ public class UnitController : EntityController
 
         targetPosition = transform.position;
         highlight = transform.Find("Highlight").gameObject;
-        Deselect();
+        Selected = false;
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
             TakeDamage(10);
+
+        if (attackTarget is not null && attackTarget.Alive)
+        {
+            MoveTo(attackTarget);
+            StartAttackingTarget(attackTarget);
+        }
 
         var destination = new Vector3(
             targetPosition.x, 
@@ -95,6 +100,31 @@ public class UnitController : EntityController
             agent.SetDestination(destination);
 
         Animate();
+    }
+
+    private void StartAttackingTarget(EntityController target)
+    {
+        var distance = DistanceTo(target);
+        var attackRange = 0.6f * target.Size.magnitude;
+        if (distance > attackRange)
+            return;
+        var routine = AttackRoutine(target);
+        StartCoroutine(routine);
+    }
+
+    private IEnumerator<YieldInstruction> AttackRoutine(EntityController target)
+    {
+        if (attacking || !Alive)
+            yield break;
+
+        attacking = true;
+        StopMovement();
+        animator.SetTrigger("Attack");
+        yield return new WaitForSeconds(0.5f);
+
+        target.TakeDamage(damage);
+        yield return new WaitForSeconds(0.4f);
+        attacking = false;
     }
 
     private void Animate()

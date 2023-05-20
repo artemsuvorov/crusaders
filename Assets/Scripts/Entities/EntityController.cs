@@ -39,7 +39,8 @@ public class EntityController : MonoBehaviour
     public Vector2 Position => transform.position;
     public Vector2 Size => entityCollider.bounds.size;
 
-    public UnityAction<HealthEventArgs> HealthChanged;
+    public event UnityAction<HealthEventArgs> HealthChanged;
+    public event UnityAction Died;
 
     private void OnEnable()
     {
@@ -59,11 +60,14 @@ public class EntityController : MonoBehaviour
         HealthChanged?.Invoke(args);
     }
 
-    protected virtual void OnDead() { }
+    public float DistanceTo(EntityController other)
+    {
+        return Vector2.Distance(this.Position, other.Position);
+    }
 
     private void OnHealthChanged(HealthEventArgs arg)
     {
         if (arg.Health <= 0)
-            OnDead();
+            Died?.Invoke();
     }
 }

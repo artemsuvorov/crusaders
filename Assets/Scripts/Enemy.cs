@@ -3,16 +3,13 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    private const float UnitAttackRange = 1.0f;
-    private const float BuildingAttackRange = 2.0f;
-
     [SerializeField]
     private Instantiator instantiator;
 
     [SerializeField]
     private GameObject unitPrefab;
 
-    private HashSet<UnitController> units = new();
+    private readonly HashSet<UnitController> units = new();
 
     private void Update()
     {
@@ -20,6 +17,7 @@ public class Enemy : MonoBehaviour
         {
             var instance = instantiator.Instantiate(unitPrefab, Vector2.zero);
             var unit = instance.GetComponent<UnitController>();
+            unit.Selectable = false;
             units.Add(unit);
         }
 
@@ -29,21 +27,11 @@ public class Enemy : MonoBehaviour
             if (!unit.Alive)
                 continue;
             var closest = GetClosestHostileEntity(unit, entities);
-            if (closest)
-                MoveUnitAndAttack(unit, closest);
+            if (closest is null)
+                continue;
+            unit.MoveTo(closest);
+            unit.SelectAttackTarget(closest);
         }
-    }
-
-    private void MoveUnitAndAttack(UnitController unit, EntityController target)
-    {
-        var distance = Distance(unit, target);
-        // TODO: make more generic via enitity.Size property
-        if (target is UnitController && distance <= UnitAttackRange)
-            unit.Attack(target);
-        else if (target is BuildingController && distance <= BuildingAttackRange)
-            unit.Attack(target);
-        else
-            unit.MoveTo(target.Position);
     }
 
     private EntityController GetClosestHostileEntity(

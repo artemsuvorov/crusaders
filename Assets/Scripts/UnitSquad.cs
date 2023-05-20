@@ -1,72 +1,98 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-// TODO: abstract out common code in UnitSquad and Enemy classes
 public class UnitSquad
 {
-    private const float UnitAttackRange = 1.0f;
-    private const float BuildingAttackRange = 2.0f;
-
-    // TODO: change class to HashSet<UnitController>
-    private readonly List<UnitController> selectedUnits = new();
+    private readonly HashSet<UnitController> selectedUnits = new();
 
     public void SelectUnitsInArea(Vector2 start, Vector2 end)
     {
         DeselectAllUnits();
 
         var colliders = Physics2D.OverlapAreaAll(start, end);
-
         foreach (var collider in colliders)
         {
             var unit = collider.GetComponent<UnitController>();
-            if (unit is null || !unit.Alive)
+            if (unit is null || !unit.Alive || !unit.Selectable)
                 continue;
 
+            unit.Selected = true;
             selectedUnits.Add(unit);
-            unit.Select();
-            //Debug.Log(unit);
         }
     }
 
-    public void MoveUnitsTo(Vector2 position)
+    public void MoveUnitsAndAutoAttack(Vector2 position)
+    {
+        var target = SelectClosestAttackTargetAround(position);
+        if (target is null || IsAlly(target))
+            MoveUnitsTo(position);
+        else
+            SelectAttackTarget(target);
+    }
+
+    public void Deselect(UnitController unit)
+    {
+        selectedUnits.Remove(unit);
+        unit.Selected = false;
+    }
+
+    private void MoveUnitsTo(Vector2 position)
     {
         var positions = GetPositionsAround(position, selectedUnits.Count);
 
-        for (var i = 0; i < selectedUnits.Count; i++)
+        var index = 0;
+        foreach (var unit in selectedUnits)
         {
-            var unit = selectedUnits[i];
-            unit.MoveTo(positions[i % positions.Count]);
+            unit.DeselectAttackTarget();
+            unit.MoveTo(positions[index]);
+            index++;
         }
     }
 
-    public void MoveUnitsAndAttack(EntityController target)
+    private void SelectAttackTarget(EntityController entity)
     {
         foreach (var unit in selectedUnits)
         {
-            if (!unit.Alive)
-                return;
-            if (unit != target)
-                MoveUnitAndAttack(unit, target);
+            if (unit != entity)
+                unit.SelectAttackTarget(entity);
         }
     }
 
-    private void MoveUnitAndAttack(UnitController unit, EntityController target)
+    private bool IsAlly(EntityController entity)
     {
-        var distance = Distance(unit, target);
-        // TODO: make more generic via enitity.Size property
-        if (target is UnitController && distance <= UnitAttackRange)
-            unit.Attack(target);
-        else if (target is BuildingController && distance <= BuildingAttackRange)
-            unit.Attack(target);
-        else
-            unit.MoveTo(target.Position);
+        return entity is UnitController unit && selectedUnits.Contains(unit);
     }
 
     private void DeselectAllUnits()
     {
         foreach (var unit in selectedUnits)
-            unit.Deselect();
+            unit.Selected = false;
         selectedUnits.Clear();
+    }
+
+    private EntityController SelectClosestAttackTargetAround(Vector2 position)
+    {
+        const float Radius = 0.5f;
+
+        var colliders = Physics2D.OverlapCircleAll(position, Radius);
+        if (colliders is null || colliders.Length <= 0)
+            return null;
+
+        //Debug.Log(string.Join(" ", colliders.Select(x => x.ToString())));
+        var candidate = colliders.FirstOrDefault(e =>
+        {
+            var entity = e.GetComponent<EntityController>();
+            return entity is not null && !IsAlly(entity);
+        });
+        if (candidate is null)
+            return null;
+
+        var entity = candidate.GetComponent<EntityController>();
+        if (entity is null || !entity.Alive)
+            return null;
+
+        return entity;
     }
 
     private List<Vector2> GetPositionsAround(Vector2 position, int count)
@@ -80,7 +106,7 @@ public class UnitSquad
         for (var i = 0; i < ringCount; i++)
         {
             var positionsInRing = GetPositionsAround(
-                position, (i + 1) * FirstRingCount, (i + 1) * BetweenUnitDistance);
+                position, (i+1) * FirstRingCount, (i+1) * BetweenUnitDistance);
             positions.AddRange(positionsInRing);
         }
 
@@ -100,11 +126,6 @@ public class UnitSquad
         }
 
         return positions;
-    }
-
-    private float Distance(EntityController entity1, EntityController entity2)
-    {
-        return Vector2.Distance(entity1.Position, entity2.Position);
     }
 
     private Vector2 RotateVector(Vector2 vector, float angle)

@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -13,37 +12,26 @@ public class Player : MonoBehaviour
 
     public void OnAreaSelected(SelectionEventArgs args)
     {
-        if (args.MouseButton == MouseButton.Left)
-        {
-            squad.SelectUnitsInArea(args.Start, args.End);
-        }
-        else if (args.MouseButton == MouseButton.Right)
-        {
-            var attackTarget = SelectAttackTargetInArea(args.Start, args.End);
-            if (attackTarget)
-                squad.MoveUnitsAndAttack(attackTarget);
-        }
-    }
-
-    private EntityController SelectAttackTargetInArea(Vector2 start, Vector2 end)
-    {
-        var collider = Physics2D.OverlapArea(start, end);
-        if (collider is null)
-            return null;
-        var entity = collider.GetComponent<EntityController>();
-        if (entity is null || !entity.Alive)
-            return null;
-        return entity;
+        squad.SelectUnitsInArea(args.Start, args.End);
     }
 
     public void OnTargetPointMoved(Vector2 targetPosition)
     {
-        squad.MoveUnitsTo(targetPosition);
+        squad.MoveUnitsAndAutoAttack(targetPosition);
+        //squad.MoveUnitsTo(targetPosition);
+        //squad.AutoAttackClosestTargetAt(targetPosition);
     }
 
     public void OnEntityCreated(InstanceEventArgs args)
     {
         instantiator.Instantiate(args.Instance, args.Position);
+    }
+
+    public void OnEntityDied(InstanceEventArgs args)
+    {
+        var unit = args.Instance.GetComponent<UnitController>();
+        if (unit is not null)
+            unit.Died += () => squad.Deselect(unit);
     }
 
     public void OnEntityBlueprinting(InstanceEventArgs args)
