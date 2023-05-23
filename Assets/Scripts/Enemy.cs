@@ -9,7 +9,14 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private GameObject unitPrefab;
 
-    private readonly HashSet<UnitController> units = new();
+    private readonly Faction faction;
+    private readonly HashSet<UnitController> units;
+
+    public Enemy()
+    {
+        faction = new Faction(FactionName.Muslim);
+        units = new HashSet<UnitController>();
+    }
 
     private void Update()
     {
@@ -17,6 +24,7 @@ public class Enemy : MonoBehaviour
         {
             var instance = instantiator.Instantiate(unitPrefab, Vector2.zero);
             var unit = instance.GetComponent<UnitController>();
+            faction.AddAlly(unit);
             unit.Selectable = false;
             units.Add(unit);
         }
@@ -42,9 +50,9 @@ public class Enemy : MonoBehaviour
         
         foreach (var entity in entities)
         {
-            if (unit == entity || !entity.Alive || IsAlly(entity))
+            if (unit == entity || !entity.Alive || faction.ConstainsAlly(entity))
                 continue;
-            var distance = Distance(unit, entity);
+            var distance = unit.DistanceTo(entity);
             if (distance >= minDistance)
                 continue;
             closest = entity;
@@ -52,15 +60,5 @@ public class Enemy : MonoBehaviour
         }
 
         return closest;
-    }
-
-    private bool IsAlly(EntityController entity)
-    {
-        return entity is UnitController otherUnit && units.Contains(otherUnit);
-    }
-
-    private float Distance(EntityController entity1, EntityController entity2)
-    {
-        return Vector2.Distance(entity1.Position, entity2.Position);
     }
 }
