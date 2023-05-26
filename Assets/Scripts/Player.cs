@@ -57,6 +57,9 @@ public class Player : MonoBehaviour
     private void OnBlueprintPlaced(InstanceEventArgs args)
     {
         var instance = instantiator.Instantiate(args.Instance, args.Position);
+        var entity = instance.GetComponent<EntityController>();
+        if (entity)
+            faction.AddAlly(entity);
 
         var resourceBuilding = instance.GetComponent<ResourceBuildingController>();
         if (resourceBuilding is not null)
