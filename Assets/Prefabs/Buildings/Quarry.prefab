@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -489345040555457989}
   m_Layer: 0
   m_Name: Quarry
-  m_TagString: Building
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

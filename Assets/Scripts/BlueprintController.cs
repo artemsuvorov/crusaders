@@ -43,7 +43,7 @@ public class BlueprintController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Building"))
+        if (collision.gameObject.CompareTag("Obstacle"))
         {
             hasCollision = true;
             spriteRenderer.color = unavailableColor;
@@ -52,7 +52,7 @@ public class BlueprintController : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Building"))
+        if (collision.gameObject.CompareTag("Obstacle"))
         {
             hasCollision = false;
             spriteRenderer.color = availableColor;
