@@ -14,13 +14,15 @@ public class Player : MonoBehaviour
     private readonly Faction faction;
     private readonly UnitSquad squad;
 
+    public Faction Faction => faction;
+
     public Player()
     {
         faction = new Faction(FactionName.English);
         squad = new UnitSquad(faction);
     }
 
-    private void Start()
+    private void Awake()
     {
         LoadMissionEntities();
     }

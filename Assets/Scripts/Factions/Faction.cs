@@ -14,6 +14,9 @@ public class Faction
 
     public FactionName Name { get; private set; }
 
+    public bool HasTownhall => Townhall is not null;
+    public TownhallController Townhall { get; private set; }
+
     public Faction(FactionName name)
     {
         Name = name;
@@ -23,6 +26,10 @@ public class Faction
     {
         entities.Add(entity);
         entity.Died += () => entities.Remove(entity);
+
+        var townhall = entity.GetComponent<TownhallController>();
+        if (townhall is not null)
+            Townhall = townhall;
     }
 
     public bool ConstainsAlly(EntityController entity)

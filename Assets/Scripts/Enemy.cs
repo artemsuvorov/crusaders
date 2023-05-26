@@ -12,6 +12,8 @@ public class Enemy : MonoBehaviour
     private readonly Faction faction;
     private readonly HashSet<UnitController> units;
 
+    public Faction Faction => faction;
+
     public Enemy()
     {
         faction = new Faction(FactionName.Muslim);

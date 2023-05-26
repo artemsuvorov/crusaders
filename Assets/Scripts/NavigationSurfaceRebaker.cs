@@ -13,5 +13,6 @@ public class NavigationSurfaceRebaker : MonoBehaviour
     private void Awake()
     {
         surface = GetComponent<NavMeshSurface>();
+        surface.hideEditorLogs = true;
     }
 }
