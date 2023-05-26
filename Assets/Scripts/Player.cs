@@ -8,6 +8,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Instantiator instantiator;
 
+    [SerializeField]
+    private Transform factionParent;
+
     private readonly Faction faction;
     private readonly UnitSquad squad;
 
@@ -15,6 +18,11 @@ public class Player : MonoBehaviour
     {
         faction = new Faction(FactionName.English);
         squad = new UnitSquad(faction);
+    }
+
+    private void Start()
+    {
+        LoadMissionEntities();
     }
 
     public void OnAreaSelected(SelectionEventArgs args)
@@ -69,5 +77,26 @@ public class Player : MonoBehaviour
         var unitBuilding = instance.GetComponent<UnitBuildingController>();
         if (unitBuilding is not null)
             unitBuilding.UnitCreated += (unitArgs) => OnEntityCreated(unitArgs);
+    }
+
+    private void LoadMissionEntities()
+    {
+        foreach (Transform child in factionParent)
+        {
+            var entity = child.GetComponent<EntityController>();
+            if (entity is null)
+                continue;
+
+            faction.AddAlly(entity);
+
+            var resourceBuilding = entity.GetComponent<ResourceBuildingController>();
+            if (resourceBuilding is not null)
+                resourceBuilding.ResourceProduced += (resourceArgs) =>
+                    resources.IncreaseResource(resourceArgs.Resource, resourceArgs.Amount);
+
+            var unitBuilding = entity.GetComponent<UnitBuildingController>();
+            if (unitBuilding is not null)
+                unitBuilding.UnitCreated += (unitArgs) => OnEntityCreated(unitArgs);
+        }
     }
 }

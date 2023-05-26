@@ -18,6 +18,7 @@ public class Interface : MonoBehaviour
     private void Start()
     {
         canvasTransform = transform;
+        LoadMissionEntities();
     }
 
     public void OnResourceIncreased(Resources resources)
@@ -52,5 +53,17 @@ public class Interface : MonoBehaviour
     {
         resources.IncreaseResource(Resource.Wood, 100);
         resources.IncreaseResource(Resource.Stone, 100);
+    }
+
+    private void LoadMissionEntities()
+    {
+        var entities = FindObjectsOfType<EntityController>();
+
+        foreach (var entity in entities)
+        {
+            var instance = Instantiate(healthBarPrefab, canvasTransform);
+            var healthBar = instance.GetComponent<HealthBarController>();
+            healthBar.Observe(entity);
+        }
     }
 }
