@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour
 {
@@ -9,10 +12,15 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private GameObject unitPrefab;
 
+    private const float ViewRadius = 10.0f;
+
     private readonly Faction faction;
     private readonly HashSet<UnitController> units;
 
     public Faction Faction => faction;
+    public int AliveEnemyCount => units.Count(u => u.Alive);
+
+    public event UnityAction UnitDied;
 
     public Enemy()
     {
@@ -20,22 +28,26 @@ public class Enemy : MonoBehaviour
         units = new HashSet<UnitController>();
     }
 
+    public void SpawnEnemyUnit(Vector2 position)
+    {
+        var instance = instantiator.Instantiate(unitPrefab, position);
+        var unit = instance.GetComponent<UnitController>();
+        faction.AddAlly(unit);
+        unit.Selectable = false;
+        unit.Died += () => UnitDied?.Invoke();
+        units.Add(unit);
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.K))
-        {
-            var instance = instantiator.Instantiate(unitPrefab, Vector2.zero);
-            var unit = instance.GetComponent<UnitController>();
-            faction.AddAlly(unit);
-            unit.Selectable = false;
-            units.Add(unit);
-        }
+            SpawnEnemyUnit(Vector2.zero);
 
-        var entities = FindObjectsOfType<EntityController>();
         foreach (var unit in units)
         {
             if (!unit.Alive)
                 continue;
+            var entities = GetVisibleEntities(unit);
             var closest = GetClosestHostileEntity(unit, entities);
             if (closest is null)
                 continue;
@@ -44,8 +56,15 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private static IEnumerable<EntityController> GetVisibleEntities(UnitController unit)
+    {
+        return Physics2D.OverlapCircleAll(unit.transform.position, ViewRadius)
+            .Select(c => c.GetComponent<EntityController>())
+            .Where(c => c is not null);
+    }
+
     private EntityController GetClosestHostileEntity(
-        UnitController unit, EntityController[] entities)
+        UnitController unit, IEnumerable<EntityController> entities)
     {
         EntityController closest = null;
         var minDistance = Mathf.Infinity;

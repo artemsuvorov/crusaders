@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -49,6 +48,8 @@ public class DefenseMission : Mission
 
 public class MissionController : MonoBehaviour
 {
+    private WavesController wavesController;
+    
     [SerializeField]
     private Player player;
 
@@ -65,6 +66,14 @@ public class MissionController : MonoBehaviour
             player.Faction.Townhall.Died += mission.OnPlayerTownhallDestroyed;
         if (enemy.Faction.HasTownhall)
             enemy.Faction.Townhall.Died += mission.OnEnemyTownhallDestroyed;
+
+        wavesController = enemy.GetComponent<WavesController>();
+        if (wavesController is not null)
+        {
+            wavesController.WaveStarted += () => Debug.Log("Wave STARTED");
+            wavesController.WaveEnded += () => Debug.Log("Wave ENDED");
+            wavesController.AllWavesEnded += mission.OnEnemyDefeated;
+        }
     }
 
     private void OnMissionResultChanged()
