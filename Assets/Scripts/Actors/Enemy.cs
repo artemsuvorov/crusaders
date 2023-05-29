@@ -11,8 +11,6 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private GameObject unitPrefab;
 
-    private const float ViewRadius = 10.0f;
-
     private readonly Faction faction;
     private readonly HashSet<UnitController> units;
 
@@ -20,6 +18,8 @@ public class Enemy : MonoBehaviour
     public int AliveEnemyCount => units.Count(u => u.Alive);
 
     public event UnityAction UnitDied;
+
+    public float ViewRadius { get; set; } = 10.0f;
 
     public Enemy()
     {
@@ -55,7 +55,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private static IEnumerable<EntityController> GetVisibleEntities(UnitController unit)
+    private IEnumerable<EntityController> GetVisibleEntities(UnitController unit)
     {
         return Physics2D.OverlapCircleAll(unit.transform.position, ViewRadius)
             .Select(c => c.GetComponent<EntityController>())
