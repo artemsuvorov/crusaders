@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -23,8 +24,10 @@ public class Interface : MonoBehaviour
         canvasTransform = transform;
         LoadMissionEntities();
 
-        missionController.WaveAwaited += (s) => missionText.text = $"Next Wave in: {s}s";
-        missionController.WaveStarted += () => missionText.text = $"The Wave is coming!";
+        missionController.WaveAwaited += (s) => 
+            StartCoroutine(UpdateMissionInfoTextRoutine(s));
+        missionController.WaveStarted += () => 
+            missionText.text = $"The Wave is coming!";
     }
 
     public void OnResourceIncreased(Resources resources)
@@ -70,6 +73,16 @@ public class Interface : MonoBehaviour
             var instance = Instantiate(healthBarPrefab, canvasTransform);
             var healthBar = instance.GetComponent<HealthBarController>();
             healthBar.Observe(entity);
+        }
+    }
+
+    private IEnumerator<YieldInstruction> UpdateMissionInfoTextRoutine(float delay)
+    {
+        const float Step = 1.0f;
+        for (var rem = delay; rem > 0; rem -= Step)
+        {
+            missionText.text = $"Next Wave in: {rem:0}s";
+            yield return new WaitForSeconds(Step);
         }
     }
 }
