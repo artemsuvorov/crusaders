@@ -5,10 +5,13 @@ using UnityEngine.UI;
 public class Interface : MonoBehaviour
 {
     [SerializeField]
-    private Text resourcesText;
+    private Text resourcesText, missionText;
 
     [SerializeField]
     private GameObject healthBarPrefab;
+
+    [SerializeField]
+    private MissionController missionController;
 
     private Transform canvasTransform;
 
@@ -19,6 +22,9 @@ public class Interface : MonoBehaviour
     {
         canvasTransform = transform;
         LoadMissionEntities();
+
+        missionController.WaveAwaited += (s) => missionText.text = $"Next Wave in: {s}s";
+        missionController.WaveStarted += () => missionText.text = $"The Wave is coming!";
     }
 
     public void OnResourceIncreased(Resources resources)

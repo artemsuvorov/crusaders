@@ -58,6 +58,10 @@ public class MissionController : MonoBehaviour
 
     private readonly Mission mission = new DefenseMission();
 
+    public event UnityAction<float> WaveAwaited;
+    public event UnityAction WaveStarted;
+    public event UnityAction WaveEnded;
+
     private void Start()
     {
         mission.ResultChanged += OnMissionResultChanged;
@@ -68,12 +72,13 @@ public class MissionController : MonoBehaviour
             enemy.Faction.Townhall.Died += mission.OnEnemyTownhallDestroyed;
 
         wavesController = enemy.GetComponent<WavesController>();
-        if (wavesController is not null)
-        {
-            wavesController.WaveStarted += () => Debug.Log("Wave STARTED");
-            wavesController.WaveEnded += () => Debug.Log("Wave ENDED");
-            wavesController.AllWavesEnded += mission.OnEnemyDefeated;
-        }
+        if (wavesController is null)
+            return;
+
+        wavesController.WaveAwaited += (s) => WaveAwaited?.Invoke(s);
+        wavesController.WaveStarted += () => WaveStarted?.Invoke();
+        wavesController.WaveEnded += () => WaveEnded?.Invoke();
+        wavesController.AllWavesEnded += mission.OnEnemyDefeated;
     }
 
     private void OnMissionResultChanged()

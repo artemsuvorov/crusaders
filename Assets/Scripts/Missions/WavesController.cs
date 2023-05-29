@@ -4,7 +4,6 @@ using UnityEngine.Events;
 
 public enum SpawnSide
 {
-
     Left,
     Right,
     Top,
@@ -20,7 +19,11 @@ public struct Wave
 
 public class WavesController : MonoBehaviour
 {
+
     private Enemy enemyController;
+
+    [SerializeField]
+    private float initialDelayInSeconds = 2.0f;
 
     [SerializeField]
     private float waveDelayInSeconds = 10.0f;
@@ -36,6 +39,7 @@ public class WavesController : MonoBehaviour
 
     private int currentWaveIndex = 0;
 
+    public event UnityAction<float> WaveAwaited;
     public event UnityAction WaveStarted;
     public event UnityAction WaveEnded;
     public event UnityAction AllWavesEnded;
@@ -43,22 +47,27 @@ public class WavesController : MonoBehaviour
     private void Start()
     {
         enemyController = GetComponent<Enemy>();
-        StartCoroutine(StartWaveRoutine(waveDelayInSeconds));
+        StartCoroutine(StartMissionWavesRoutine());
+    }
+
+    private IEnumerator StartMissionWavesRoutine()
+    {
+        yield return new WaitForSeconds(initialDelayInSeconds);
+        yield return StartWaveRoutine(waveDelayInSeconds);
     }
 
     private IEnumerator StartWaveRoutine(float delayInSeconds)
     {
+        WaveAwaited?.Invoke(delayInSeconds);
         yield return AwaitWaveRoutine(delayInSeconds);
         
         WaveStarted?.Invoke();
-
         var enemyCount = enemiesPerWave[currentWaveIndex % enemiesPerWave.Length];
         var spawnSide = spawnSides[currentWaveIndex % spawnSides.Length];
         yield return SpawnEnemiesRoutine(enemyCount, spawnSide);
     }
 
-    private IEnumerator SpawnEnemiesRoutine(
-        int enemyCount, SpawnSide side)
+    private IEnumerator SpawnEnemiesRoutine(int enemyCount, SpawnSide side)
     {
         if (enemyCount <= 0)
             yield break;
