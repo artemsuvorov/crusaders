@@ -202,7 +202,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 40586677}
   m_OnClick:
     m_PersistentCalls:
@@ -839,8 +839,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resourcesText: {fileID: 736950762}
   missionText: {fileID: 2007698976}
-  healthBarPrefab: {fileID: 215415896872574407, guid: 630d0eacfa3d45e4193f4f1fb7988b44, type: 3}
+  player: {fileID: 2109041736}
   missionController: {fileID: 675513967}
+  healthBarPrefab: {fileID: 215415896872574407, guid: 630d0eacfa3d45e4193f4f1fb7988b44, type: 3}
   CreateBuildingButtonPressed:
     m_PersistentCalls:
       m_Calls:
@@ -10210,11 +10211,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Resources
-
-    Wood: 0
-
-    Stone: 0'
+  m_Text: Resources
 --- !u!222 &736950763
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11508,7 +11505,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1437222360}
   m_OnClick:
     m_PersistentCalls:
@@ -11592,21 +11589,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa4de69cd447ac54888cb201c0aa3b6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ResourceIncreased:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 455423909}
-        m_TargetAssemblyTypeName: Interface, Assembly-CSharp
-        m_MethodName: OnResourceIncreased
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!4 &1456264085
 Transform:
   m_ObjectHideFlags: 0
@@ -12554,7 +12536,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1931750697}
   m_OnClick:
     m_PersistentCalls:
@@ -13019,6 +13001,9 @@ MonoBehaviour:
   resources: {fileID: 1456264084}
   instantiator: {fileID: 1228971931}
   factionParent: {fileID: 46942696}
+  availableBuildings:
+  - {fileID: 2787091184178982752, guid: 8ff5737d18563914596ed8723015c7b1, type: 3}
+  - {fileID: 3555539832586657679, guid: 889f2d4f88ee1c24cab8f9a6d508eba6, type: 3}
 --- !u!4 &2109041737
 Transform:
   m_ObjectHideFlags: 0

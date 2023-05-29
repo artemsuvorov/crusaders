@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
@@ -11,10 +12,17 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Transform factionParent;
 
+    [SerializeField]
+    private BuildingController[] availableBuildings;
+
     private readonly Faction faction;
     private readonly UnitSquad squad;
 
+    public Resources Resources => resources;
     public Faction Faction => faction;
+
+    public event UnityAction<BuildingController> BuildingBecameAvailable;
+    public event UnityAction<BuildingController> BuildingBecameUnavailable;
 
     public Player()
     {
@@ -24,6 +32,8 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        resources.ResourceChanged += OnResourceChanged;
+        OnResourceChanged(resources);
         LoadMissionEntities();
     }
 
@@ -71,6 +81,10 @@ public class Player : MonoBehaviour
         if (entity)
             faction.AddAlly(entity);
 
+        var building = instance.GetComponent<BuildingController>();
+        if (building is not null)
+            resources.DecreaseResource(building.Cost);
+
         var resourceBuilding = instance.GetComponent<ResourceBuildingController>();
         if (resourceBuilding is not null)
             resourceBuilding.ResourceProduced += (resourceArgs) => 
@@ -79,6 +93,17 @@ public class Player : MonoBehaviour
         var unitBuilding = instance.GetComponent<UnitBuildingController>();
         if (unitBuilding is not null)
             unitBuilding.UnitCreated += (unitArgs) => OnEntityCreated(unitArgs);
+    }
+
+    private void OnResourceChanged(Resources resources)
+    {
+        foreach (var building in availableBuildings)
+        {
+            if (resources.CanAfford(building.Cost))
+                BuildingBecameAvailable?.Invoke(building);
+            else
+                BuildingBecameUnavailable?.Invoke(building);
+        }
     }
 
     private void LoadMissionEntities()
