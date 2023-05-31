@@ -6,7 +6,21 @@ using UnityEngine.Events;
 public enum Resource
 {
     Wood,
-    Stone
+    Stone,
+
+}
+
+public class ResourceEventArgs
+{
+    public Resource Resource { get; private set; }
+
+    public int Amount { get; private set; }
+
+    public ResourceEventArgs(Resource resource, int amount)
+    {
+        Resource = resource;
+        Amount = amount;
+    }
 }
 
 public class Resources : MonoBehaviour

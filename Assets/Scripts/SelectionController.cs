@@ -4,7 +4,6 @@ using UnityEngine.Events;
 public class SelectionEventArgs
 {
     public Vector2 Start { get; private set; }
-
     public Vector2 End { get; private set; }
 
     public SelectionEventArgs(Vector2 start, Vector2 end)

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class Interface : MonoBehaviour
@@ -7,22 +8,16 @@ public class Interface : MonoBehaviour
     private Text resourcesText;
 
     [SerializeField]
-    private UnitController unitPrefab;
+    private GameObject healthBarPrefab;
 
-    public void OnResourceIncreaseButtonPressed(Resources resources)
-    {
-        resources.IncreaseResource(Resource.Wood, 100);
-        resources.IncreaseResource(Resource.Stone, 100);
-    }
+    private Transform canvasTransform;
 
-    public void OnCreateWorkerButtonPressed()
-    {
-        InstantiateUnit();
-    } 
+    public UnityEvent<InstanceEventArgs> CreateBuildingButtonPressed;
+    public UnityEvent<InstanceEventArgs> CreateUnitButtonReleased;
 
-    public void OnCreateKnightButtonPressed()
+    private void Start()
     {
-        InstantiateUnit();
+        canvasTransform = transform;
     }
 
     public void OnResourceIncreased(Resources resources)
@@ -30,10 +25,32 @@ public class Interface : MonoBehaviour
         resourcesText.text = "Resources\r\n" + resources.ToString();
     }
 
-    private void InstantiateUnit()
+    public void OnEntityCreated(InstanceEventArgs args)
     {
-        var position = new Vector3(0.0f, 0.0f);
-        var rotation = Quaternion.identity;
-        Instantiate(unitPrefab, position, rotation);
+        var entity = args.Instance.GetComponent<EntityController>();
+        if (entity is null)
+            return;
+
+        var instance = Instantiate(healthBarPrefab, canvasTransform);
+        var healthBar = instance.GetComponent<HealthBarController>();
+        healthBar.Observe(entity);
+    }
+
+    public void OnCreateBuildingButtonPressed(GameObject buildingBlueprint)
+    {
+        var args = new InstanceEventArgs(buildingBlueprint);
+        CreateBuildingButtonPressed?.Invoke(args);
+    }
+
+    public void OnCreateUnitButtonReleased(GameObject unit)
+    {
+        var args = new InstanceEventArgs(unit);
+        CreateUnitButtonReleased?.Invoke(args);
+    }
+
+    public void OnResourceIncreaseButtonPressed(Resources resources)
+    {
+        resources.IncreaseResource(Resource.Wood, 100);
+        resources.IncreaseResource(Resource.Stone, 100);
     }
 }

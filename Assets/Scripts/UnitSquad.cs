@@ -1,44 +1,98 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class UnitSquad
 {
-    private readonly List<UnitController> selectedUnits = new();
+    private readonly HashSet<UnitController> selectedUnits = new();
 
     public void SelectUnitsInArea(Vector2 start, Vector2 end)
     {
         DeselectAllUnits();
 
         var colliders = Physics2D.OverlapAreaAll(start, end);
-
         foreach (var collider in colliders)
         {
             var unit = collider.GetComponent<UnitController>();
-            if (unit is null)
+            if (unit is null || !unit.Alive || !unit.Selectable)
                 continue;
 
+            unit.Selected = true;
             selectedUnits.Add(unit);
-            unit.Select();
-            //Debug.Log(unit);
         }
     }
 
-    public void MoveUnitsTo(Vector2 position)
+    public void MoveUnitsAndAutoAttack(Vector2 position)
+    {
+        var target = SelectClosestAttackTargetAround(position);
+        if (target is null || IsAlly(target))
+            MoveUnitsTo(position);
+        else
+            SelectAttackTarget(target);
+    }
+
+    public void Deselect(UnitController unit)
+    {
+        selectedUnits.Remove(unit);
+        unit.Selected = false;
+    }
+
+    private void MoveUnitsTo(Vector2 position)
     {
         var positions = GetPositionsAround(position, selectedUnits.Count);
 
-        for (var i = 0; i < selectedUnits.Count; i++)
+        var index = 0;
+        foreach (var unit in selectedUnits)
         {
-            var unit = selectedUnits[i];
-            unit.MoveTo(positions[i % positions.Count]);
+            unit.DeselectAttackTarget();
+            unit.MoveTo(positions[index]);
+            index++;
         }
+    }
+
+    private void SelectAttackTarget(EntityController entity)
+    {
+        foreach (var unit in selectedUnits)
+        {
+            if (unit != entity)
+                unit.SelectAttackTarget(entity);
+        }
+    }
+
+    private bool IsAlly(EntityController entity)
+    {
+        return entity is UnitController unit && selectedUnits.Contains(unit);
     }
 
     private void DeselectAllUnits()
     {
         foreach (var unit in selectedUnits)
-            unit.Deselect();
+            unit.Selected = false;
         selectedUnits.Clear();
+    }
+
+    private EntityController SelectClosestAttackTargetAround(Vector2 position)
+    {
+        const float Radius = 0.5f;
+
+        var colliders = Physics2D.OverlapCircleAll(position, Radius);
+        if (colliders is null || colliders.Length <= 0)
+            return null;
+
+        //Debug.Log(string.Join(" ", colliders.Select(x => x.ToString())));
+        var candidate = colliders.FirstOrDefault(e =>
+        {
+            var entity = e.GetComponent<EntityController>();
+            return entity is not null && !IsAlly(entity);
+        });
+        if (candidate is null)
+            return null;
+
+        var entity = candidate.GetComponent<EntityController>();
+        if (entity is null || !entity.Alive)
+            return null;
+
+        return entity;
     }
 
     private List<Vector2> GetPositionsAround(Vector2 position, int count)
@@ -52,7 +106,7 @@ public class UnitSquad
         for (var i = 0; i < ringCount; i++)
         {
             var positionsInRing = GetPositionsAround(
-                position, (i + 1) * FirstRingCount, (i + 1) * BetweenUnitDistance);
+                position, (i+1) * FirstRingCount, (i+1) * BetweenUnitDistance);
             positions.AddRange(positionsInRing);
         }
 
