@@ -131,10 +131,21 @@ public class UnitController : EntityController
     {
         animator.SetBool("Alive", Alive);
         
-        if (agent.velocity.magnitude > 0.0f)
+        var direction = agent.velocity.normalized;
+        if (direction.magnitude > 0.0f)
+        {
             animator.SetFloat("Speed", speed);
-        else
+         
+            var directionX = Mathf.RoundToInt(direction.x);
+            var directionY = Mathf.RoundToInt(direction.y);
+
+            animator.SetInteger("DirectionX", directionX);
+            animator.SetInteger("DirectionY", directionY);
+        }
+        else 
+        {
             animator.SetFloat("Speed", 0.0f);
+        }
     }
 
     private void StopMovement()
