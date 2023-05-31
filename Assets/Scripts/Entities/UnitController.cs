@@ -130,7 +130,7 @@ public class UnitController : EntityController
     private void Animate()
     {
         animator.SetBool("Alive", Alive);
-
+        
         if (agent.velocity.magnitude > 0.0f)
             animator.SetFloat("Speed", speed);
         else
