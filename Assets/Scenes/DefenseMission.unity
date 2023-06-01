@@ -10789,7 +10789,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialDelayInSeconds: 2
-  waveDelayInSeconds: 20
+  waveDelayInSeconds: 2
   waveCount: 1
   enemiesPerWave: 06000000
   spawnSides: 00000000
