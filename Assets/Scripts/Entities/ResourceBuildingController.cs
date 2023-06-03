@@ -10,7 +10,7 @@ public abstract class ResourceBuildingController : BuildingController
 
     public event UnityAction<ResourceEventArgs> ResourceProduced;
 
-    protected void IncreaseResource()
+    protected void ProduceResource()
     {
         if (!Alive)
             return;
@@ -20,6 +20,6 @@ public abstract class ResourceBuildingController : BuildingController
 
     private void Start()
     {
-        InvokeRepeating(nameof(IncreaseResource), Delay, RepeatRate);
+        InvokeRepeating(nameof(ProduceResource), Delay, RepeatRate);
     }
 }

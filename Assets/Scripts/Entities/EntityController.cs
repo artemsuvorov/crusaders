@@ -19,6 +19,7 @@ public class Health
 {
     private float value = 100;
 
+    // TODO: update Value after Max is set
     public float Max { get; set; } = 100;
 
     public float Value

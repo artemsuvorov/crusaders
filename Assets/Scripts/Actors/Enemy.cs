@@ -41,18 +41,20 @@ public class Enemy : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.K))
             SpawnEnemyUnit(Vector2.zero);
-
         foreach (var unit in units)
-        {
-            if (!unit.Alive)
-                continue;
-            var entities = GetVisibleEntities(unit);
-            var closest = GetClosestHostileEntity(unit, entities);
-            if (closest is null)
-                continue;
-            unit.MoveTo(closest);
-            unit.SelectAttackTarget(closest);
-        }
+            MoveUnitAndAttackClosest(unit);
+    }
+
+    private void MoveUnitAndAttackClosest(UnitController unit)
+    {
+        if (!unit.Alive)
+            return;
+        var entities = GetVisibleEntities(unit);
+        var closest = GetClosestHostileEntity(unit, entities);
+        if (closest is null)
+            return;
+        unit.MoveTo(closest);
+        unit.SelectAttackTarget(closest);
     }
 
     private IEnumerable<EntityController> GetVisibleEntities(UnitController unit)

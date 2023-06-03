@@ -31,7 +31,7 @@ public class UnitSquad
 
     public void MoveUnitsAndAutoAttack(Vector2 position)
     {
-        var target = SelectClosestAttackTargetAround(position);
+        var target = FindClosestAttackTargetAround(position);
         if (target is null || faction.ConstainsAlly(target))
             MoveUnitsTo(position);
         else
@@ -73,7 +73,7 @@ public class UnitSquad
         selectedUnits.Clear();
     }
 
-    private EntityController SelectClosestAttackTargetAround(Vector2 position)
+    private EntityController FindClosestAttackTargetAround(Vector2 position)
     {
         const float Radius = 0.5f;
 
