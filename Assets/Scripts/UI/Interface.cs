@@ -28,8 +28,9 @@ public class Interface : MonoBehaviour
     {
         canvasTransform = transform;
 
-        sawmillButton = transform.Find("Sawmill Button").GetComponent<Button>();
-        quarryButton = transform.Find("Quarry Button").GetComponent<Button>();
+        var gameUi = transform.Find("Game UI");
+        sawmillButton = gameUi.Find("Sawmill Button").GetComponent<Button>();
+        quarryButton = gameUi.Find("Quarry Button").GetComponent<Button>();
 
         player.BuildingBecameAvailable += OnBuildingBecameAvailable;
         player.BuildingBecameUnavailable += OnBuildingBecameUnavailable;

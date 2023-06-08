@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -50,12 +51,17 @@ public class DefenseMission : Mission
 public class MissionController : MonoBehaviour
 {
     private WavesController wavesController;
-    
+    private DialogueController dialogueController;
+    private DialogueContainer dialogueContainer;
+
     [SerializeField]
     private Player player;
 
     [SerializeField]
     private Enemy enemy;
+
+    [SerializeField]
+    private GameObject gameUiPanel, dialoguePanel;
 
     private readonly Mission mission = new DefenseMission();
 
@@ -81,6 +87,36 @@ public class MissionController : MonoBehaviour
         wavesController.WaveStarted += () => WaveStarted?.Invoke();
         wavesController.WaveEnded += () => WaveEnded?.Invoke();
         wavesController.AllWavesEnded += mission.OnEnemyDefeated;
+
+        dialogueController = dialoguePanel.GetComponent<DialogueController>();
+        dialogueContainer = GetComponent<DialogueContainer>();
+
+        dialogueController.DialogueStarted += OnDialogueStarted;
+        dialogueController.DialogueEnded += OnDialogueEnded;
+
+        OnGameStarted();
+    }
+
+    private void OnGameStarted()
+    {
+        var startDialogue = dialogueContainer.StartMissionDialogue;
+        dialogueController.StartDialogue(startDialogue);
+    }
+
+    private void OnDialogueStarted()
+    {
+        gameUiPanel.SetActive(false);
+        dialoguePanel.SetActive(true);
+        Time.timeScale = 0.0f;
+        Debug.Log("Dialogue Start");
+    }
+
+    private void OnDialogueEnded()
+    {
+        gameUiPanel.SetActive(true);
+        dialoguePanel.SetActive(false);
+        Time.timeScale = 1.0f;
+        Debug.Log("Dialogue Ended");
     }
 
     private void OnMissionResultChanged()
