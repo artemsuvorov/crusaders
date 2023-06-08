@@ -52,7 +52,7 @@ public class MissionController : MonoBehaviour
 {
     private WavesController wavesController;
     private DialogueController dialogueController;
-    private DialogueContainer dialogueContainer;
+    private DialogueContainer dialogues;
 
     [SerializeField]
     private Player player;
@@ -89,18 +89,12 @@ public class MissionController : MonoBehaviour
         wavesController.AllWavesEnded += mission.OnEnemyDefeated;
 
         dialogueController = dialoguePanel.GetComponent<DialogueController>();
-        dialogueContainer = GetComponent<DialogueContainer>();
+        dialogues = GetComponent<DialogueContainer>();
 
         dialogueController.DialogueStarted += OnDialogueStarted;
         dialogueController.DialogueEnded += OnDialogueEnded;
 
-        OnGameStarted();
-    }
-
-    private void OnGameStarted()
-    {
-        var startDialogue = dialogueContainer.StartMissionDialogue;
-        dialogueController.StartDialogue(startDialogue);
+        dialogueController.StartDialogue(dialogues.StartMissionDialogue);
     }
 
     private void OnDialogueStarted()
@@ -108,7 +102,6 @@ public class MissionController : MonoBehaviour
         gameUiPanel.SetActive(false);
         dialoguePanel.SetActive(true);
         Time.timeScale = 0.0f;
-        Debug.Log("Dialogue Start");
     }
 
     private void OnDialogueEnded()
@@ -116,10 +109,22 @@ public class MissionController : MonoBehaviour
         gameUiPanel.SetActive(true);
         dialoguePanel.SetActive(false);
         Time.timeScale = 1.0f;
-        Debug.Log("Dialogue Ended");
+
+        RedirectToNextSceneIfNeeded();
     }
 
     private void OnMissionResultChanged()
+    {
+        if (mission.Result == MissionResult.Win)
+            dialogueController.StartDialogue(dialogues.VictoryDialogue);
+            //SceneManager.LoadScene("AfterGameWin");
+
+        if (mission.Result == MissionResult.Lose)
+            dialogueController.StartDialogue(dialogues.DefeatDialogue);
+        //SceneManager.LoadScene("AfterGameLose");
+    }
+
+    private void RedirectToNextSceneIfNeeded()
     {
         if (mission.Result == MissionResult.Win)
             SceneManager.LoadScene("AfterGameWin");

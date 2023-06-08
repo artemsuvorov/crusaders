@@ -10169,6 +10169,18 @@ MonoBehaviour:
     - Greetings, mighty warrior, the Leader of the Crusade!
     - It is high time to revenge the filthy muslims and retrieve the Holy Grail!
       Good Luck!
+  victoryDialogue:
+    sprite: {fileID: 21300000, guid: 9b4c4b06037d9a340acb24c041cb5209, type: 3}
+    name: Richard the Lionheart
+    sentences:
+    - Excellent command, Crusader! With your help we will acquire the Holy Grail
+      in no time!
+  defeatDialogue:
+    sprite: {fileID: 21300000, guid: 9b4c4b06037d9a340acb24c041cb5209, type: 3}
+    name: Richard the Lionheart
+    sentences:
+    - Lord save us! Later, those pesky muslims will pay for the souls of our soldiers!
+      Now, we retreat.
 --- !u!1 &695631827
 GameObject:
   m_ObjectHideFlags: 0
@@ -10966,7 +10978,7 @@ MonoBehaviour:
   initialDelayInSeconds: 2
   waveDelayInSeconds: 15
   waveCount: 1
-  enemiesPerWave: 06000000
+  enemiesPerWave: 03000000
   spawnSides: 00000000
 --- !u!1 &1116542125
 GameObject:
