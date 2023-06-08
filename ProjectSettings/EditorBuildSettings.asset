@@ -5,7 +5,22 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MissionBase.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/DefenseMission.unity
+    guid: ebb907ae19719c0469f885d51aaa90fd
+  - enabled: 1
+    path: Assets/Scenes/_Menu.unity
+    guid: 8993a48b979774f268d90b28fed011eb
+  - enabled: 1
+    path: Assets/Scenes/PreGame.unity
+    guid: 8941943dd31984076b1b6df124697ebe
+  - enabled: 1
+    path: Assets/Scenes/AfterGameWin.unity
+    guid: 81dd7f59815214a608c3084efcc9a147
+  - enabled: 1
+    path: Assets/Scenes/AfterGameLose.unity
+    guid: 89b3f753d42164893899c2c9ddda6e6b
   m_configObjects: {}

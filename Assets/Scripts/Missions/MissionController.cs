@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public enum MissionResult
 {
@@ -65,6 +66,7 @@ public class MissionController : MonoBehaviour
     private void Start()
     {
         mission.ResultChanged += OnMissionResultChanged;
+        //SceneManager.LoadScene("AfterGameWin");
 
         if (player.Faction.HasTownhall)
             player.Faction.Townhall.Died += mission.OnPlayerTownhallDestroyed;
@@ -84,15 +86,9 @@ public class MissionController : MonoBehaviour
     private void OnMissionResultChanged()
     {
         if (mission.Result == MissionResult.Win)
-        {
-            Time.timeScale = 0;
-            Debug.Log("You won!");
-        }
+            SceneManager.LoadScene("AfterGameWin");
 
         if (mission.Result == MissionResult.Lose)
-        {
-            Time.timeScale = 0;
-            Debug.Log("You lost!");
-        }
+            SceneManager.LoadScene("AfterGameLose");
     }
 }

@@ -599,7 +599,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &425410490
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10789,7 +10789,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialDelayInSeconds: 2
-  waveDelayInSeconds: 2
+  waveDelayInSeconds: 15
   waveCount: 1
   enemiesPerWave: 06000000
   spawnSides: 00000000
@@ -11755,7 +11755,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1533141954
 RectTransform:
   m_ObjectHideFlags: 0
