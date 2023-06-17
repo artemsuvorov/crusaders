@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class UnitController : EntityController
+public abstract class UnitController : EntityController
 {
     private bool attacking = false;
 
@@ -21,11 +21,6 @@ public class UnitController : EntityController
     { 
         get => Selectable && highlight.activeSelf;
         set => highlight.SetActive(Selectable && value);
-    }
-
-    public UnitController()
-    {
-        Health.Max = 30.0f;
     }
 
     public void MoveTo(Vector3 position)

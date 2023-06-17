@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 220538227500489753}
   - component: {fileID: 220538227500489752}
   - component: {fileID: 7703437790117814992}
-  - component: {fileID: 220538227500489755}
+  - component: {fileID: 6436730993006734333}
   - component: {fileID: 2831181902587866954}
   m_Layer: 0
   m_Name: Worker
@@ -115,7 +115,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5985791, y: 1.3805679}
   m_EdgeRadius: 0
---- !u!114 &220538227500489755
+--- !u!114 &6436730993006734333
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,7 +124,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 220538227500489754}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 087d3813f35f5694db80baa41be569e2, type: 3}
+  m_Script: {fileID: 11500000, guid: a9f0dd2cff49a024ca6b8e1a8da9a8c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!195 &2831181902587866954
