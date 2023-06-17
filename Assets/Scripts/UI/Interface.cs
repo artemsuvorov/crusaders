@@ -6,7 +6,10 @@ using UnityEngine.UI;
 public class Interface : MonoBehaviour
 {
     [SerializeField]
-    private Text resourcesText, missionText;
+    private Text missionText;
+
+    [SerializeField]
+    private Text goldText, woodText, stoneText;
 
     [SerializeField]
     private Player player;
@@ -17,7 +20,7 @@ public class Interface : MonoBehaviour
     [SerializeField]
     private GameObject healthBarPrefab;
 
-    private Transform canvasTransform;
+    private Transform barParentTansform;
 
     private Button sawmillButton, quarryButton;
 
@@ -26,7 +29,7 @@ public class Interface : MonoBehaviour
 
     private void OnEnable()
     {
-        canvasTransform = transform;
+        barParentTansform = transform.Find("Bars");
 
         var gameUi = transform.Find("Game UI");
         sawmillButton = gameUi.Find("Sawmill Button").GetComponent<Button>();
@@ -52,7 +55,7 @@ public class Interface : MonoBehaviour
         if (entity is null)
             return;
 
-        var instance = Instantiate(healthBarPrefab, canvasTransform);
+        var instance = Instantiate(healthBarPrefab, barParentTansform);
         var healthBar = instance.GetComponent<HealthBarController>();
         healthBar.Observe(entity);
     }
@@ -77,7 +80,9 @@ public class Interface : MonoBehaviour
 
     private void OnResourceChanged(Resources resources)
     {
-        resourcesText.text = "Resources\r\n" + resources.ToString();
+        goldText.text = resources.Values[Resource.Gold].ToString();
+        woodText.text = resources.Values[Resource.Wood].ToString();
+        stoneText.text = resources.Values[Resource.Stone].ToString();
     }
 
     private void OnBuildingBecameAvailable(BuildingController building)
@@ -112,7 +117,7 @@ public class Interface : MonoBehaviour
 
         foreach (var entity in entities)
         {
-            var instance = Instantiate(healthBarPrefab, canvasTransform);
+            var instance = Instantiate(healthBarPrefab, barParentTansform);
             var healthBar = instance.GetComponent<HealthBarController>();
             healthBar.Observe(entity);
         }
