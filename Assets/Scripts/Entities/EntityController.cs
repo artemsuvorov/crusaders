@@ -17,15 +17,22 @@ public class HealthEventArgs
 
 public class Health
 {
-    private float value = 100;
+    private float max = 100, current = 100;
 
-    // TODO: update Value after Max is set
-    public float Max { get; set; } = 100;
-
-    public float Value
+    public float Max
     {
-        get => value;
-        set => this.value = Mathf.Min(Mathf.Max(0, value), Max);
+        get => max;
+        set
+        {
+            max = Mathf.Max(0, value);
+            current = Mathf.Min(current, max);
+        }
+    }
+
+    public float Current
+    {
+        get => current;
+        set => current = Mathf.Min(Mathf.Max(0, value), Max);
     }
 }
 
@@ -34,8 +41,10 @@ public class EntityController : MonoBehaviour
     private readonly Health health = new();
     private Collider2D entityCollider;
 
-    public float Health => health.Value;
-    public bool Alive => Health > 0;
+    protected Health Health => health;
+
+    public float HealthPoints => Health.Current;
+    public bool Alive => HealthPoints > 0;
 
     public Vector2 Position => transform.position;
     public Vector2 Size => entityCollider.bounds.size;
@@ -56,8 +65,8 @@ public class EntityController : MonoBehaviour
 
     public virtual void TakeDamage(float amount)
     {
-        health.Value -= amount;
-        var args = new HealthEventArgs(health.Value, health.Max);
+        health.Current -= amount;
+        var args = new HealthEventArgs(health.Current, health.Max);
         HealthChanged?.Invoke(args);
     }
 

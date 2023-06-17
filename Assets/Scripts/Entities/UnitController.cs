@@ -1,16 +1,9 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class UnitController : EntityController
 {
-    [SerializeField, Range(1.0f, 10.0f)]
-    private float speed = 1.0f;
-
-    [SerializeField, Range(0.0f, 100.0f)]
-    private float damage = 10.0f;
-
     private bool attacking = false;
 
     private Vector3 targetPosition;
@@ -20,12 +13,19 @@ public class UnitController : EntityController
     private NavMeshAgent agent;
     private Animator animator;
 
+    public float Damage { get; protected set; } = 10.0f;
+
     public bool Selectable { get; set; } = true;
 
     public bool Selected
     { 
         get => Selectable && highlight.activeSelf;
         set => highlight.SetActive(Selectable && value);
+    }
+
+    public UnitController()
+    {
+        Health.Max = 30.0f;
     }
 
     public void MoveTo(Vector3 position)
@@ -121,7 +121,7 @@ public class UnitController : EntityController
         StopMovement();
         yield return new WaitForSeconds(0.5f);
 
-        target.TakeDamage(damage);
+        target.TakeDamage(Damage);
         yield return new WaitForSeconds(0.4f);
         attacking = false;
     }
@@ -138,7 +138,7 @@ public class UnitController : EntityController
             return;
         }
 
-        animator.SetFloat("Speed", speed);
+        animator.SetFloat("Speed", 1.0f);
 
         var directionX = Mathf.RoundToInt(direction.x);
         var directionY = Mathf.RoundToInt(direction.y);
@@ -151,5 +151,15 @@ public class UnitController : EntityController
     {
         agent.isStopped = true;
         targetPosition = transform.position;
+    }
+}
+
+public class KnightController : UnitController
+{
+    public KnightController()
+    {
+        Health.Max = 100.0f;
+        Health.Current = 100.0f;
+        Damage = 20.0f;
     }
 }
