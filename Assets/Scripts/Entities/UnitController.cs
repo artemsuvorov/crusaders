@@ -153,13 +153,3 @@ public class UnitController : EntityController
         targetPosition = transform.position;
     }
 }
-
-public class KnightController : UnitController
-{
-    public KnightController()
-    {
-        Health.Max = 100.0f;
-        Health.Current = 100.0f;
-        Damage = 20.0f;
-    }
-}
