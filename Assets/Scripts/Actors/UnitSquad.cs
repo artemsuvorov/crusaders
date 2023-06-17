@@ -44,6 +44,13 @@ public class UnitSquad
         unit.Selected = false;
     }
 
+    public void DeselectAllUnits()
+    {
+        foreach (var unit in selectedUnits)
+            unit.Selected = false;
+        selectedUnits.Clear();
+    }
+
     private void MoveUnitsTo(Vector2 position)
     {
         var positions = PositionUtils.GetPositionsAround(position, selectedUnits.Count);
@@ -64,13 +71,6 @@ public class UnitSquad
             if (unit != entity)
                 unit.SelectAttackTarget(entity);
         }
-    }
-
-    private void DeselectAllUnits()
-    {
-        foreach (var unit in selectedUnits)
-            unit.Selected = false;
-        selectedUnits.Clear();
     }
 
     private EntityController FindClosestAttackTargetAround(Vector2 position)

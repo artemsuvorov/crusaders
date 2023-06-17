@@ -6,12 +6,6 @@ using UnityEngine.UI;
 public class Interface : MonoBehaviour
 {
     [SerializeField]
-    private Text missionText;
-
-    [SerializeField]
-    private Text goldText, woodText, stoneText;
-
-    [SerializeField]
     private Player player;
 
     [SerializeField]
@@ -22,6 +16,9 @@ public class Interface : MonoBehaviour
 
     private Transform barParentTansform;
 
+    private Text missionText;
+    private Text goldText, woodText, stoneText;
+    private RectTransform buildingsPanel, unitsPanel;
     private Button sawmillButton, quarryButton;
 
     public UnityEvent<InstanceEventArgs> CreateBuildingButtonPressed;
@@ -32,8 +29,22 @@ public class Interface : MonoBehaviour
         barParentTansform = transform.Find("Bars");
 
         var gameUi = transform.Find("Game UI");
-        sawmillButton = gameUi.Find("Sawmill Button").GetComponent<Button>();
-        quarryButton = gameUi.Find("Quarry Button").GetComponent<Button>();
+
+        missionText = gameUi.Find("Mission Text").GetComponent<Text>();
+
+        var resourcesPanel = gameUi.Find("Resources Panel");
+        goldText = resourcesPanel.Find("Gold Number").GetComponent<Text>();
+        woodText = resourcesPanel.Find("Wood Number").GetComponent<Text>();
+        stoneText = resourcesPanel.Find("Stone Number").GetComponent<Text>();
+
+        buildingsPanel = gameUi.Find("Buildings Panel").GetComponent<RectTransform>();
+        sawmillButton = buildingsPanel.transform.Find("Sawmill Button").GetComponent<Button>();
+        quarryButton = buildingsPanel.transform.Find("Quarry Button").GetComponent<Button>();
+
+        unitsPanel = gameUi.Find("Units Panel").GetComponent<RectTransform>();
+
+        player.TownhallSelected += OnTownhallSelected;
+        player.TownhallDeselected += OnTownhallDeselected;
 
         player.BuildingBecameAvailable += OnBuildingBecameAvailable;
         player.BuildingBecameUnavailable += OnBuildingBecameUnavailable;
@@ -83,6 +94,18 @@ public class Interface : MonoBehaviour
         goldText.text = resources.Values[Resource.Gold].ToString();
         woodText.text = resources.Values[Resource.Wood].ToString();
         stoneText.text = resources.Values[Resource.Stone].ToString();
+    }
+
+    private void OnTownhallSelected()
+    {
+        buildingsPanel.localScale = Vector3.zero;
+        unitsPanel.localScale = Vector3.one;
+    }
+
+    private void OnTownhallDeselected()
+    {
+        buildingsPanel.localScale = Vector3.one;
+        unitsPanel.localScale = Vector3.zero;
     }
 
     private void OnBuildingBecameAvailable(BuildingController building)

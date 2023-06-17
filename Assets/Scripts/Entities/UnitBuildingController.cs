@@ -4,7 +4,7 @@ using UnityEngine.Events;
 public abstract class UnitBuildingController : BuildingController
 {
     [SerializeField]
-    private Vector2 createPositionOffset;
+    private Transform spawnPoint;
 
     [SerializeField]
     private GameObject unitPrefab;
@@ -18,7 +18,7 @@ public abstract class UnitBuildingController : BuildingController
     {
         if (!Alive)
             return;
-        var position = (Vector2)transform.position + createPositionOffset;
+        var position = (Vector2)spawnPoint.position;
         var args = new InstanceEventArgs(position, unitPrefab);
         UnitCreated?.Invoke(args);
     }

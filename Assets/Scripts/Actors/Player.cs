@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -21,6 +22,9 @@ public class Player : MonoBehaviour
     public Resources Resources => resources;
     public Faction Faction => faction;
 
+    public event UnityAction TownhallSelected;
+    public event UnityAction TownhallDeselected;
+
     public event UnityAction<BuildingController> BuildingBecameAvailable;
     public event UnityAction<BuildingController> BuildingBecameUnavailable;
 
@@ -39,7 +43,24 @@ public class Player : MonoBehaviour
 
     public void OnAreaSelected(SelectionEventArgs args)
     {
-        squad.SelectUnitsInArea(args.Start, args.End);
+        var colliders = Physics2D.OverlapAreaAll(args.Start, args.End);
+        var hasUnits = colliders
+            .Any(c => c.GetComponent<UnitController>() is not null);
+
+        if (hasUnits)
+        {
+            squad.SelectUnitsInArea(args.Start, args.End);
+            TownhallDeselected?.Invoke();
+            return;
+        }
+
+        var townhall = colliders
+            .FirstOrDefault(c => c.GetComponent<TownhallController>() is not null);
+        if (townhall is null)
+            return;
+
+        TownhallSelected?.Invoke();
+        squad.DeselectAllUnits();
     }
 
     public void OnTargetPointMoved(Vector2 targetPosition)
