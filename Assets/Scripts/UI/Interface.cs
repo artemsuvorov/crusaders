@@ -79,6 +79,12 @@ public class Interface : MonoBehaviour
 
     public void OnCreateUnitButtonReleased(GameObject unit)
     {
+        if (player.Faction.HasTownhall)
+        {
+            player.Faction.Townhall.CreateUnit(unit);
+            return;
+        }
+
         var args = new InstanceEventArgs(unit);
         CreateUnitButtonReleased?.Invoke(args);
     }

@@ -3,6 +3,8 @@ using UnityEngine.Events;
 
 public abstract class UnitBuildingController : BuildingController
 {
+    private const float Radius = 2.5f;
+
     [SerializeField]
     private Transform spawnPoint;
 
@@ -14,13 +16,24 @@ public abstract class UnitBuildingController : BuildingController
 
     public event UnityAction<InstanceEventArgs> UnitCreated;
 
-    protected void CreateUnit()
+    public void CreateUnit()
+    {
+        CreateUnit(unitPrefab);
+    }
+
+    public void CreateUnit(GameObject unit)
     {
         if (!Alive)
             return;
-        var position = (Vector2)spawnPoint.position;
-        var args = new InstanceEventArgs(position, unitPrefab);
+        var position = GetRandomSpawnPosition(Radius);
+        var args = new InstanceEventArgs(position, unit);
         UnitCreated?.Invoke(args);
+    }
+
+    private Vector2 GetRandomSpawnPosition(float radius)
+    {
+        Vector2 origin = spawnPoint.position;
+        return origin + Random.insideUnitCircle * radius;
     }
 
     private void Start()
