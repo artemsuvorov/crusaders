@@ -61,8 +61,8 @@ public class Player : MonoBehaviour
             return;
         }
 
-        var townhall = colliders
-            .FirstOrDefault(c => c.GetComponent<TownhallController>() is not null);
+        var townhall = colliders.FirstOrDefault(c => 
+            c.GetComponent<TownhallController>() == faction.Townhall);
         if (townhall is null)
             return;
 
