@@ -72,6 +72,8 @@ public class Player : MonoBehaviour
 
     public void OnTargetPointMoved(Vector2 targetPosition)
     {
+        if (UnityEngine.Random.Range(0, 3) <= 0)
+            FindObjectOfType<AudioManager>().Play("Move Knight");
         squad.MoveUnitsAndAutoAttack(targetPosition);
         //squad.MoveUnitsTo(targetPosition);
         //squad.AutoAttackClosestTargetAt(targetPosition);
@@ -83,15 +85,29 @@ public class Player : MonoBehaviour
         var entity = instance.GetComponent<EntityController>();
         if (entity is null)
             return;
+
         resources.DecreaseResource(entity.Cost);
         faction.AddAlly(entity);
+
+        if (entity is WorkerController)
+            FindObjectOfType<AudioManager>().Play("Recruit Worker");
+        if (entity is KnightController)
+            FindObjectOfType<AudioManager>().Play("Recruit Knight");
+
+        entity.Died += OnEntityDied;
+        entity.Died += e =>
+        {
+            if (e is UnitController unit)
+                squad.Deselect(unit);
+        };
     }
 
-    public void OnEntityDied(InstanceEventArgs args)
+    public void OnEntityDied(EntityController entity)
     {
-        var unit = args.Instance.GetComponent<UnitController>();
-        if (unit is not null)
-            unit.Died += () => squad.Deselect(unit);
+        if (entity is UnitController)
+            FindObjectOfType<AudioManager>().Play("Unit Death");
+        if (entity is BuildingController)
+            FindObjectOfType<AudioManager>().Play("Building Destruction");
     }
 
     public void OnEntityBlueprinting(InstanceEventArgs args)
@@ -108,8 +124,13 @@ public class Player : MonoBehaviour
     {
         var instance = instantiator.Instantiate(args.Instance, args.Position);
         var entity = instance.GetComponent<EntityController>();
-        if (entity)
-            faction.AddAlly(entity);
+        if (entity is null)
+            return;
+        
+        FindObjectOfType<AudioManager>().Play("Building");
+        
+        faction.AddAlly(entity);
+        entity.Died += OnEntityDied;
 
         var building = instance.GetComponent<BuildingController>();
         if (building is not null)
@@ -170,6 +191,7 @@ public class Player : MonoBehaviour
             if (entity is null)
                 continue;
 
+            entity.Died += OnEntityDied;
             faction.AddAlly(entity);
 
             var resourceBuilding = entity.GetComponent<ResourceBuildingController>();

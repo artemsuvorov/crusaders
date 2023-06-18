@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
@@ -36,8 +37,14 @@ public class Enemy : MonoBehaviour
         var unit = instance.GetComponent<UnitController>();
         faction.AddAlly(unit);
         unit.Selectable = false;
-        unit.Died += () => UnitDied?.Invoke();
+        unit.Died += OnEnemyUnitDied;
         units.Add(unit);
+    }
+
+    private void OnEnemyUnitDied(EntityController e)
+    {
+        FindObjectOfType<AudioManager>().Play("Unit Death");
+        UnitDied?.Invoke();
     }
 
     private void Awake()
@@ -104,7 +111,7 @@ public class Enemy : MonoBehaviour
             if (entity is not UnitController unit)
                 continue;
             unit.Selectable = false;
-            unit.Died += () => UnitDied?.Invoke();
+            unit.Died += OnEnemyUnitDied;
             units.Add(unit);
         }
     }

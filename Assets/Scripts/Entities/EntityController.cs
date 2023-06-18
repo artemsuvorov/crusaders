@@ -56,7 +56,7 @@ public abstract class EntityController : MonoBehaviour
     public Vector2 Size => entityCollider.bounds.size;
 
     public event UnityAction<HealthEventArgs> HealthChanged;
-    public event UnityAction Died;
+    public event UnityAction<EntityController> Died;
 
     private void OnEnable()
     {
@@ -84,6 +84,6 @@ public abstract class EntityController : MonoBehaviour
     private void OnHealthChanged(HealthEventArgs arg)
     {
         if (arg.Health <= 0)
-            Died?.Invoke();
+            Died?.Invoke(this);
     }
 }

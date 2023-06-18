@@ -61,7 +61,7 @@ public abstract class UnitController : EntityController
 
     private void Awake()
     {
-        Died += () => StopMovement();
+        Died += e => StopMovement();
 
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
@@ -111,6 +111,8 @@ public abstract class UnitController : EntityController
     {
         if (attacking || !Alive)
             yield break;
+
+        FindObjectOfType<AudioManager>().Play("Unit Attack");
 
         attacking = true;
         StopMovement();

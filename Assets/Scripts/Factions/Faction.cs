@@ -25,7 +25,7 @@ public class Faction
     public void AddAlly(EntityController entity)
     {
         entities.Add(entity);
-        entity.Died += () => entities.Remove(entity);
+        entity.Died += e => entities.Remove(entity);
 
         var townhall = entity.GetComponent<TownhallController>();
         if (townhall is not null)

@@ -14,36 +14,6 @@ public enum MissionResult
     Lose,
 }
 
-public class DefenseMission : Mission
-{
-    public override void OnEnemyDefeated()
-    {
-        Result = MissionResult.Win;
-    }
-
-    public override void OnPlayerTownhallDestroyed()
-    {
-        Result = MissionResult.Lose;
-    }
-
-    public override void OnEnemyTownhallDestroyed() { }
-}
-
-public class OffenseMission : Mission
-{
-    public override void OnEnemyDefeated() { }
-
-    public override void OnPlayerTownhallDestroyed()
-    {
-        Result = MissionResult.Lose;
-    }
-
-    public override void OnEnemyTownhallDestroyed()
-    {
-        Result = MissionResult.Win;
-    }
-}
-
 public abstract class Mission
 {
     private MissionResult result = MissionResult.None;
@@ -63,6 +33,36 @@ public abstract class Mission
     public event UnityAction ResultChanged;
 
     public abstract void OnEnemyDefeated();
-    public abstract void OnEnemyTownhallDestroyed();
-    public abstract void OnPlayerTownhallDestroyed();
+    public abstract void OnEnemyTownhallDestroyed(EntityController e);
+    public abstract void OnPlayerTownhallDestroyed(EntityController e);
+}
+
+public class DefenseMission : Mission
+{
+    public override void OnEnemyDefeated()
+    {
+        Result = MissionResult.Win;
+    }
+
+    public override void OnPlayerTownhallDestroyed(EntityController e)
+    {
+        Result = MissionResult.Lose;
+    }
+
+    public override void OnEnemyTownhallDestroyed(EntityController e) { }
+}
+
+public class OffenseMission : Mission
+{
+    public override void OnEnemyDefeated() { }
+
+    public override void OnPlayerTownhallDestroyed(EntityController e)
+    {
+        Result = MissionResult.Lose;
+    }
+
+    public override void OnEnemyTownhallDestroyed(EntityController e)
+    {
+        Result = MissionResult.Win;
+    }
 }
