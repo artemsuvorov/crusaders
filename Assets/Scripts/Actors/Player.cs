@@ -127,7 +127,7 @@ public class Player : MonoBehaviour
 
     public void OnResourceSold(Resource resource)
     {
-        if (resources.Values[Resource.Wood] <= 0)
+        if (resources.Values[resource] <= 0)
             return;
 
         resources.IncreaseResource(resource, -1);
