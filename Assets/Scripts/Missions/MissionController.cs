@@ -3,56 +3,12 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-public enum MissionResult
-{
-    None,
-    Win,
-    Lose,
-}
-
-public abstract class Mission
-{
-    private MissionResult result = MissionResult.None;
-
-    public string Name { get; private set; }
-
-    public MissionResult Result
-    { 
-        get => result; 
-        protected set
-        {
-            result = value;
-            ResultChanged?.Invoke();
-        } 
-    }
-
-    public event UnityAction ResultChanged;
-
-    public abstract void OnEnemyDefeated();
-    public abstract void OnEnemyTownhallDestroyed();
-    public abstract void OnPlayerTownhallDestroyed();
-}
-
-public class DefenseMission : Mission
-{
-    public override void OnEnemyDefeated()
-    {
-        Result = MissionResult.Win;
-    }
-
-    public override void OnPlayerTownhallDestroyed()
-    {
-        Result = MissionResult.Lose;
-    }
-
-    public override void OnEnemyTownhallDestroyed() { }
-}
-
 public class MissionController : MonoBehaviour
 {
     private WavesController wavesController;
     private DialogueController dialogueController;
     private DialogueContainer dialogues;
+    private Mission mission;
 
     [SerializeField]
     private Player player;
@@ -63,7 +19,8 @@ public class MissionController : MonoBehaviour
     [SerializeField]
     private GameObject gameUiPanel, dialoguePanel;
 
-    private readonly Mission mission = new DefenseMission();
+    [SerializeField]
+    private MissionType type;
 
     public event UnityAction<float> WaveAwaited;
     public event UnityAction WaveStarted;
@@ -71,6 +28,14 @@ public class MissionController : MonoBehaviour
 
     private void Start()
     {
+        mission = type switch
+        {
+            MissionType.Offense => new OffenseMission(),
+            MissionType.Defense => new DefenseMission(),
+            _ => throw new ArgumentException(
+                $"Unexpected mission type {type}.")
+        };
+
         mission.ResultChanged += OnMissionResultChanged;
         //SceneManager.LoadScene("AfterGameWin");
 
@@ -80,13 +45,13 @@ public class MissionController : MonoBehaviour
             enemy.Faction.Townhall.Died += mission.OnEnemyTownhallDestroyed;
 
         wavesController = enemy.GetComponent<WavesController>();
-        if (wavesController is null)
-            return;
-
-        wavesController.WaveAwaited += (s) => WaveAwaited?.Invoke(s);
-        wavesController.WaveStarted += () => WaveStarted?.Invoke();
-        wavesController.WaveEnded += () => WaveEnded?.Invoke();
-        wavesController.AllWavesEnded += mission.OnEnemyDefeated;
+        if (wavesController is not null)
+        {
+            wavesController.WaveAwaited += (s) => WaveAwaited?.Invoke(s);
+            wavesController.WaveStarted += () => WaveStarted?.Invoke();
+            wavesController.WaveEnded += () => WaveEnded?.Invoke();
+            wavesController.AllWavesEnded += mission.OnEnemyDefeated;
+        }
 
         dialogueController = dialoguePanel.GetComponent<DialogueController>();
         dialogues = GetComponent<DialogueContainer>();

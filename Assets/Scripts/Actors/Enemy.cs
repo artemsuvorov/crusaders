@@ -11,6 +11,9 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private GameObject unitPrefab;
 
+    [SerializeField]
+    private Transform factionParent;
+
     private readonly Faction faction;
     private readonly HashSet<UnitController> units;
 
@@ -35,6 +38,11 @@ public class Enemy : MonoBehaviour
         unit.Selectable = false;
         unit.Died += () => UnitDied?.Invoke();
         units.Add(unit);
+    }
+
+    private void Awake()
+    {
+        LoadMissionEntities();
     }
 
     private void Update()
@@ -82,5 +90,22 @@ public class Enemy : MonoBehaviour
         }
 
         return closest;
+    }
+
+    private void LoadMissionEntities()
+    {
+        foreach (Transform child in factionParent)
+        {
+            var entity = child.GetComponent<EntityController>();
+            if (entity is null)
+                continue;
+            faction.AddAlly(entity);
+
+            if (entity is not UnitController unit)
+                continue;
+            unit.Selectable = false;
+            unit.Died += () => UnitDied?.Invoke();
+            units.Add(unit);
+        }
     }
 }
