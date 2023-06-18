@@ -66,6 +66,8 @@ public class DialogueController : MonoBehaviour
 
     public void DisplayNextSentence()
     {
+        FindObjectOfType<AudioManager>().Play("Page");
+
         if (sentences.Count == 0)
         {
             EndDialogue();

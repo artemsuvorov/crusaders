@@ -16,6 +16,7 @@ namespace UI
 
         private void GoMenu()
         {
+            FindObjectOfType<AudioManager>().Play("Button Knob");
             SceneManager.LoadScene("Menu");
         }
     }

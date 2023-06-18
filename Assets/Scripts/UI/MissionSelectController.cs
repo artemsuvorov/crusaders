@@ -10,6 +10,7 @@ public class MissionSelectController : MonoBehaviour
 
     private void LoadScene(string name)
     {
+        FindObjectOfType<AudioManager>().Play("Button Knob");
         SceneManager.LoadScene(name);
     }
 }

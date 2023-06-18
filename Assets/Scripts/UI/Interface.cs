@@ -86,12 +86,16 @@ public class Interface : MonoBehaviour
 
     public void OnCreateBuildingButtonPressed(GameObject buildingBlueprint)
     {
+        FindObjectOfType<AudioManager>().Play("Button Knob");
+
         var args = new InstanceEventArgs(buildingBlueprint);
         CreateBuildingButtonPressed?.Invoke(args);
     }
 
     public void OnCreateUnitButtonReleased(GameObject unit)
     {
+        FindObjectOfType<AudioManager>().Play("Button Knob");
+
         if (player.Faction.HasTownhall)
         {
             player.Faction.Townhall.CreateUnit(unit);
@@ -104,6 +108,8 @@ public class Interface : MonoBehaviour
 
     public void OnResourceSellButtonPressed(ResourceComponent component)
     {
+        FindObjectOfType<AudioManager>().Play("Button Knob");
+
         ResourceSellButtonPressed?.Invoke(component.Resource);
     }
 
