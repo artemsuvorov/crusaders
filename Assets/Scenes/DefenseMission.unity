@@ -37514,6 +37514,9 @@ MonoBehaviour:
   resources: {fileID: 1456264084}
   instantiator: {fileID: 1228971931}
   factionParent: {fileID: 46942696}
+  availableUnits:
+  - {fileID: 6436730993006734333, guid: eeb9e493e96a5d74aaf1ae87d68c6693, type: 3}
+  - {fileID: 551796464266906598, guid: 8f1bb211e14239348b9314da63cf4d76, type: 3}
   availableBuildings:
   - {fileID: 2787091184178982752, guid: 8ff5737d18563914596ed8723015c7b1, type: 3}
   - {fileID: 3555539832586657679, guid: 889f2d4f88ee1c24cab8f9a6d508eba6, type: 3}

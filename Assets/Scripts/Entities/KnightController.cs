@@ -2,10 +2,9 @@
 
 public class KnightController : UnitController
 {
-    public KnightController() : base()
-    {
-        Health.Max = 100.0f;
-        Health.Current = 100.0f;
-        Damage = 20.0f;
-    }
+    private readonly Health health = new(60.0f);
+
+    public override Cost Cost => new(gold: 100);
+    protected override Health Health => health;
+    public override float Damage { get; protected set; } = 20.0f;
 }

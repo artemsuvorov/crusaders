@@ -14,6 +14,9 @@ public class Player : MonoBehaviour
     private Transform factionParent;
 
     [SerializeField]
+    private UnitController[] availableUnits;
+
+    [SerializeField]
     private BuildingController[] availableBuildings;
 
     private readonly Faction faction;
@@ -24,6 +27,9 @@ public class Player : MonoBehaviour
 
     public event UnityAction TownhallSelected;
     public event UnityAction TownhallDeselected;
+    
+    public event UnityAction<UnitController> UnitBecameAvailable;
+    public event UnityAction<UnitController> UnitBecameUnavailable;
 
     public event UnityAction<BuildingController> BuildingBecameAvailable;
     public event UnityAction<BuildingController> BuildingBecameUnavailable;
@@ -74,8 +80,10 @@ public class Player : MonoBehaviour
     {
         var instance = instantiator.Instantiate(args.Instance, args.Position);
         var entity = instance.GetComponent<EntityController>();
-        if (entity)
-            faction.AddAlly(entity);
+        if (entity is null)
+            return;
+        resources.DecreaseResource(entity.Cost);
+        faction.AddAlly(entity);
     }
 
     public void OnEntityDied(InstanceEventArgs args)
@@ -118,6 +126,14 @@ public class Player : MonoBehaviour
 
     private void OnResourceChanged(Resources resources)
     {
+        foreach (var unit in availableUnits)
+        {
+            if (resources.CanAfford(unit.Cost))
+                UnitBecameAvailable?.Invoke(unit);
+            else
+                UnitBecameUnavailable?.Invoke(unit);
+        }
+
         foreach (var building in availableBuildings)
         {
             if (resources.CanAfford(building.Cost))

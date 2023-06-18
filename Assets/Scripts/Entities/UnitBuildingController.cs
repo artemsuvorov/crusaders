@@ -11,8 +11,8 @@ public abstract class UnitBuildingController : BuildingController
     [SerializeField]
     private GameObject unitPrefab;
 
-    protected virtual float Delay => 2.0f;
-    protected virtual float RepeatRate => 10.0f;
+    //protected virtual float Delay => 2.0f;
+    //protected virtual float RepeatRate => 10.0f;
 
     public event UnityAction<InstanceEventArgs> UnitCreated;
 
@@ -36,8 +36,8 @@ public abstract class UnitBuildingController : BuildingController
         return origin + Random.insideUnitCircle * radius;
     }
 
-    private void Start()
-    {
-        InvokeRepeating(nameof(CreateUnit), Delay, RepeatRate);
-    }
+    //private void Start()
+    //{
+    //    InvokeRepeating(nameof(CreateUnit), Delay, RepeatRate);
+    //}
 }

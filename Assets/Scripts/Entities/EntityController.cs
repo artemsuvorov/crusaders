@@ -34,14 +34,20 @@ public class Health
         get => current;
         set => current = Mathf.Min(Mathf.Max(0, value), Max);
     }
+
+    public Health(float amount)
+    {
+        Max = amount;
+        Current = amount;
+    }
 }
 
-public class EntityController : MonoBehaviour
+public abstract class EntityController : MonoBehaviour
 {
-    private readonly Health health = new();
     private Collider2D entityCollider;
 
-    protected Health Health => health;
+    protected abstract Health Health { get; }
+    public abstract Cost Cost { get; }
 
     public float HealthPoints => Health.Current;
     public bool Alive => HealthPoints > 0;
@@ -65,8 +71,8 @@ public class EntityController : MonoBehaviour
 
     public virtual void TakeDamage(float amount)
     {
-        health.Current -= amount;
-        var args = new HealthEventArgs(health.Current, health.Max);
+        Health.Current -= amount;
+        var args = new HealthEventArgs(Health.Current, Health.Max);
         HealthChanged?.Invoke(args);
     }
 

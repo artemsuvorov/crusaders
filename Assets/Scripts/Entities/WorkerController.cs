@@ -2,10 +2,9 @@
 
 public class WorkerController : UnitController
 {
-    public WorkerController() : base()
-    {
-        Health.Max = 30.0f;
-        Health.Current = 30.0f;
-        Damage = 10.0f;
-    }
+    private readonly Health health = new(30.0f);
+
+    public override Cost Cost => new(gold: 100);
+    protected override Health Health => health;
+    public override float Damage { get; protected set; } = 10.0f;
 }

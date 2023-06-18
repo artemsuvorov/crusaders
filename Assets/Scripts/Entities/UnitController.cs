@@ -13,7 +13,7 @@ public abstract class UnitController : EntityController
     private NavMeshAgent agent;
     private Animator animator;
 
-    public float Damage { get; protected set; } = 10.0f;
+    public abstract float Damage { get; protected set; }
 
     public bool Selectable { get; set; } = true;
 

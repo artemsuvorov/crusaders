@@ -20,6 +20,7 @@ public class Interface : MonoBehaviour
     private Text goldText, woodText, stoneText;
     private RectTransform buildingsPanel, unitsPanel;
     private Button sawmillButton, quarryButton;
+    private Button workerButton, knightButton;
 
     public UnityEvent<InstanceEventArgs> CreateBuildingButtonPressed;
     public UnityEvent<InstanceEventArgs> CreateUnitButtonReleased;
@@ -42,9 +43,14 @@ public class Interface : MonoBehaviour
         quarryButton = buildingsPanel.transform.Find("Quarry Button").GetComponent<Button>();
 
         unitsPanel = gameUi.Find("Units Panel").GetComponent<RectTransform>();
+        workerButton = unitsPanel.transform.Find("Worker Button").GetComponent<Button>();
+        knightButton = unitsPanel.transform.Find("Knight Button").GetComponent<Button>();
 
         player.TownhallSelected += OnTownhallSelected;
         player.TownhallDeselected += OnTownhallDeselected;
+
+        player.UnitBecameAvailable += OnUnitBecameAvailable;
+        player.UnitBecameUnavailable += OnUnitBecameUnavailable;
 
         player.BuildingBecameAvailable += OnBuildingBecameAvailable;
         player.BuildingBecameUnavailable += OnBuildingBecameUnavailable;
@@ -112,6 +118,22 @@ public class Interface : MonoBehaviour
     {
         buildingsPanel.localScale = Vector3.one;
         unitsPanel.localScale = Vector3.zero;
+    }
+
+    private void OnUnitBecameAvailable(UnitController unit)
+    {
+        if (unit is WorkerController)
+            workerButton.interactable = true;
+        if (unit is KnightController)
+            knightButton.interactable = true;
+    }
+
+    private void OnUnitBecameUnavailable(UnitController unit)
+    {
+        if (unit is WorkerController)
+            workerButton.interactable = false;
+        if (unit is KnightController)
+            knightButton.interactable = false;
     }
 
     private void OnBuildingBecameAvailable(BuildingController building)
