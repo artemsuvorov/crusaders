@@ -21,9 +21,11 @@ public class Interface : MonoBehaviour
     private RectTransform buildingsPanel, unitsPanel;
     private Button sawmillButton, quarryButton;
     private Button workerButton, knightButton;
+    private Button woodSellButton, stoneSellButton;
 
     public UnityEvent<InstanceEventArgs> CreateBuildingButtonPressed;
     public UnityEvent<InstanceEventArgs> CreateUnitButtonReleased;
+    public UnityEvent<Resource> ResourceSellButtonPressed;
 
     private void OnEnable()
     {
@@ -45,6 +47,11 @@ public class Interface : MonoBehaviour
         unitsPanel = gameUi.Find("Units Panel").GetComponent<RectTransform>();
         workerButton = unitsPanel.transform.Find("Worker Button").GetComponent<Button>();
         knightButton = unitsPanel.transform.Find("Knight Button").GetComponent<Button>();
+
+        woodSellButton = unitsPanel.transform
+            .Find("Sell Wood Button").GetComponent<Button>();
+        stoneSellButton = unitsPanel.transform
+            .Find("Sell Stone Button").GetComponent<Button>();
 
         player.TownhallSelected += OnTownhallSelected;
         player.TownhallDeselected += OnTownhallDeselected;
@@ -95,6 +102,11 @@ public class Interface : MonoBehaviour
         CreateUnitButtonReleased?.Invoke(args);
     }
 
+    public void OnResourceSellButtonPressed(ResourceComponent component)
+    {
+        ResourceSellButtonPressed?.Invoke(component.Resource);
+    }
+
     public void OnResourceIncreaseButtonPressed(Resources resources)
     {
         resources.IncreaseResource(Resource.Wood, 100);
@@ -106,6 +118,9 @@ public class Interface : MonoBehaviour
         goldText.text = resources.Values[Resource.Gold].ToString();
         woodText.text = resources.Values[Resource.Wood].ToString();
         stoneText.text = resources.Values[Resource.Stone].ToString();
+
+        woodSellButton.interactable = resources.Values[Resource.Wood] > 0;
+        stoneSellButton.interactable = resources.Values[Resource.Stone] > 0;
     }
 
     private void OnTownhallSelected()

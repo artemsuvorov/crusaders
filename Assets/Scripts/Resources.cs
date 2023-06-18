@@ -4,6 +4,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.Events;
 
+[Serializable]
 public enum Resource
 {
     Gold,

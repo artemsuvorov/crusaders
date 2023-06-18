@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
@@ -122,6 +123,24 @@ public class Player : MonoBehaviour
         var unitBuilding = instance.GetComponent<UnitBuildingController>();
         if (unitBuilding is not null)
             unitBuilding.UnitCreated += (unitArgs) => OnEntityCreated(unitArgs);
+    }
+
+    public void OnResourceSold(Resource resource)
+    {
+        if (resources.Values[Resource.Wood] <= 0)
+            return;
+
+        resources.IncreaseResource(resource, -1);
+
+        // TODO: introduce resource class with its appropriate cost
+        var cost = resource switch
+        {
+            Resource.Wood => 2,
+            Resource.Stone => 4,
+            _ => throw new ArgumentException(
+                $"Unexpected resource {resource} to be sold.")
+        };
+        resources.IncreaseResource(Resource.Gold, cost);
     }
 
     private void OnResourceChanged(Resources resources)
