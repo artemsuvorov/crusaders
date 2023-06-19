@@ -34676,22 +34676,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startMissionDialogue:
-    sprite: {fileID: 21300000, guid: 9b4c4b06037d9a340acb24c041cb5209, type: 3}
-    name: Richard the Lionheart
+    sprite: {fileID: 21300000, guid: cf0fac401ed6d8742b80449549f7b9f9, type: 3}
+    name: Philip Augustus
     sentences:
     - Leader of the Crusade! It is high time to revenge the filthy muslims and retrieve
       the Holy Grail!
     - Today, we strike! Our enemy's fortress is in the West. Raze it to the ground!
       Good Luck!
   victoryDialogue:
-    sprite: {fileID: 21300000, guid: 9b4c4b06037d9a340acb24c041cb5209, type: 3}
-    name: Richard the Lionheart
+    sprite: {fileID: 21300000, guid: cf0fac401ed6d8742b80449549f7b9f9, type: 3}
+    name: Philip Augustus
     sentences:
     - Excellent command, Crusader! With your help, we will acquire the Holy Grail
       in no time!
   defeatDialogue:
-    sprite: {fileID: 21300000, guid: 9b4c4b06037d9a340acb24c041cb5209, type: 3}
-    name: Richard the Lionheart
+    sprite: {fileID: 21300000, guid: cf0fac401ed6d8742b80449549f7b9f9, type: 3}
+    name: Philip Augustus
     sentences:
     - Lord save us! Later, those pesky muslims will pay for the souls of our soldiers!
       Now, we retreat.
@@ -40974,8 +40974,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -200, y: -150}
-  m_SizeDelta: {x: 0, y: 300}
+  m_AnchoredPosition: {x: -200, y: 50}
+  m_SizeDelta: {x: -400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1753200523
 MonoBehaviour:
