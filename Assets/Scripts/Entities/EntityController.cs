@@ -49,6 +49,8 @@ public abstract class EntityController : MonoBehaviour
     protected abstract Health Health { get; }
     public abstract Cost Cost { get; }
 
+    public FactionName FactionName { get; set; }
+
     public float HealthPoints => Health.Current;
     public bool Alive => HealthPoints > 0;
 
