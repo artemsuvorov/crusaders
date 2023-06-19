@@ -7,6 +7,8 @@ public class HealthBarController : MonoBehaviour
     private Slider slider;
     private Image fill;
 
+    private bool colorChanged = false;
+
     private EntityController entity;
     private Transform entityTransform;
 
@@ -18,18 +20,14 @@ public class HealthBarController : MonoBehaviour
 
     private void Update()
     {
-        var position = entityTransform.position + 
+        var position = entityTransform.position +
             0.8f * entityTransform.localScale.y * Vector3.up;
         transform.position = ToScreenPosition(position);
 
-        fill.color = entity.FactionName switch
-        {
-            FactionName.English => Color.red,
-            FactionName.French => Color.blue,
-            FactionName.German => Color.grey,
-            FactionName.Muslim => Color.green,
-            _ => Color.red
-        };
+        if (colorChanged)
+            return;
+        ChangeColor(entity.FactionName);
+        colorChanged = true;
     }
 
     public void Observe(EntityController entity)
@@ -43,6 +41,18 @@ public class HealthBarController : MonoBehaviour
     {
         slider.maxValue = args.MaxHealth;
         slider.value = args.Health;
+    }
+
+    private void ChangeColor(FactionName factionName)
+    {
+        fill.color = factionName switch
+        {
+            FactionName.English => Color.red,
+            FactionName.French => Color.blue,
+            FactionName.German => Color.grey,
+            FactionName.Muslim => Color.green,
+            _ => Color.red
+        };
     }
 
     private Vector3 ToScreenPosition(Vector3 position)

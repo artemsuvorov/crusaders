@@ -16,6 +16,8 @@ public class Sound
     [Range(0.1f, 3.0f)]
     public float Pitch;
 
+    public bool Loop;
+
     [HideInInspector]
     public AudioSource AudioSource { get; set; }
 }
@@ -35,6 +37,7 @@ public class AudioManager : MonoBehaviour
             sound.AudioSource.clip = sound.Clip;
             sound.AudioSource.volume = sound.Volume;
             sound.AudioSource.pitch = sound.Pitch;
+            sound.AudioSource.loop = sound.Loop;
         }
     }
 

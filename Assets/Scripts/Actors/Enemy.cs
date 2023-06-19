@@ -41,12 +41,6 @@ public class Enemy : MonoBehaviour
         units.Add(unit);
     }
 
-    private void OnEnemyUnitDied(EntityController e)
-    {
-        FindObjectOfType<AudioManager>()?.Play("Unit Death");
-        UnitDied?.Invoke();
-    }
-
     private void Awake()
     {
         LoadMissionEntities();
@@ -108,11 +102,21 @@ public class Enemy : MonoBehaviour
                 continue;
             faction.AddAlly(entity);
 
+            if (entity is BuildingController building)
+                building.Died += e =>
+                    FindObjectOfType<AudioManager>()?.Play("Building Destruction");
+
             if (entity is not UnitController unit)
                 continue;
             unit.Selectable = false;
             unit.Died += OnEnemyUnitDied;
             units.Add(unit);
         }
+    }
+
+    private void OnEnemyUnitDied(EntityController e)
+    {
+        FindObjectOfType<AudioManager>()?.Play("Unit Death");
+        UnitDied?.Invoke();
     }
 }
