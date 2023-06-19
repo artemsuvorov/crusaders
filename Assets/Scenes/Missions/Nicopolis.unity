@@ -37121,7 +37121,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   instantiator: {fileID: 1228971931}
-  unitPrefab: {fileID: 220538227500489754, guid: eeb9e493e96a5d74aaf1ae87d68c6693, type: 3}
+  workerPrefab: {fileID: 220538227500489754, guid: eeb9e493e96a5d74aaf1ae87d68c6693, type: 3}
+  knightPrefab: {fileID: 220538227500489754, guid: 8f1bb211e14239348b9314da63cf4d76, type: 3}
   factionParent: {fileID: 950493390}
 --- !u!4 &1090581328
 Transform:

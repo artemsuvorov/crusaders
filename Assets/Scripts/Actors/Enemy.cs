@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     private Instantiator instantiator;
 
     [SerializeField]
-    private GameObject unitPrefab;
+    private GameObject workerPrefab, knightPrefab;
 
     [SerializeField]
     private Transform factionParent;
@@ -31,11 +31,20 @@ public class Enemy : MonoBehaviour
         units = new HashSet<UnitController>();
     }
 
-    public void SpawnEnemyUnit(Vector2 position)
+    public void SpawnEnemyUnit(UnitType type, Vector2 position)
     {
-        var instance = instantiator.Instantiate(unitPrefab, position);
+        var prefab = type switch
+        {
+            UnitType.Worker => workerPrefab,
+            UnitType.Knight => knightPrefab,
+            _ => throw new ArgumentException(
+                $"Unexpected Unit type '{type}'.")
+        };
+
+        var instance = instantiator.Instantiate(prefab, position);
         var unit = instance.GetComponent<UnitController>();
         faction.AddAlly(unit);
+
         unit.Selectable = false;
         unit.Died += OnEnemyUnitDied;
         units.Add(unit);
@@ -48,8 +57,8 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K))
-            SpawnEnemyUnit(Vector2.zero);
+        //if (Input.GetKeyDown(KeyCode.K))
+        //    SpawnEnemyUnit(Vector2.zero);
         foreach (var unit in units)
             MoveUnitAndAttackClosest(unit);
     }

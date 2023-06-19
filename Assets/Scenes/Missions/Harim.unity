@@ -33579,20 +33579,20 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 9b4c4b06037d9a340acb24c041cb5209, type: 3}
     name: Richard the Lionheart
     sentences:
-    - Greetings, mighty warrior, the Leader of the Crusade!
-    - Here, in the Muslims' Land, our positions are fragile. Defend the Townhall
-      at all cost! We must withstand the attack!
+    - Crusader! The Principality of Antioch is in danger! Atabek Nur ad-Din is prepering
+      his attack on our positions!
+    - This Syrian lands are Christians by right. Drive away the Muslims and do not
+      let our Fortress to fall!
   victoryDialogue:
     sprite: {fileID: 21300000, guid: 9b4c4b06037d9a340acb24c041cb5209, type: 3}
     name: Richard the Lionheart
     sentences:
-    - Impressive maneuver, Commander! With your tactical genuis, we will prevail!
+    - A formidable repulse! They won't recover from that for a long time!
   defeatDialogue:
     sprite: {fileID: 21300000, guid: 9b4c4b06037d9a340acb24c041cb5209, type: 3}
     name: Richard the Lionheart
     sentences:
-    - Lord save us! Later, those pesky muslims will pay for the souls of our soldiers!
-      Now, we retreat.
+    - Our Fortress has fallen! Antioch is doomed.
 --- !u!1 &695631827
 GameObject:
   m_ObjectHideFlags: 0
@@ -35122,11 +35122,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialDelayInSeconds: 2
-  waveDelayInSeconds: 30
+  waveDelayInSeconds: 40
   waveCount: 3
-  enemiesPerWave: 030000000400000001000000
-  unitTypes: 000000000000000001000000
-  spawnSides: 000000000300000001000000
+  enemiesPerWave: 020000000200000004000000
+  unitTypes: 010000000000000001000000
+  spawnSides: 030000000100000000000000
 --- !u!1 &1118814094
 GameObject:
   m_ObjectHideFlags: 0
