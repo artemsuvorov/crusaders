@@ -34775,10 +34775,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialDelayInSeconds: 2
-  waveDelayInSeconds: 15
-  waveCount: 1
-  enemiesPerWave: 03000000
-  spawnSides: 00000000
+  waveDelayInSeconds: 30
+  waveCount: 2
+  enemiesPerWave: 0300000004000000
+  spawnSides: 0000000003000000
 --- !u!1 &1118814094
 GameObject:
   m_ObjectHideFlags: 0
