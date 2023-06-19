@@ -73,7 +73,7 @@ public class Player : MonoBehaviour
     public void OnTargetPointMoved(Vector2 targetPosition)
     {
         if (UnityEngine.Random.Range(0, 3) <= 0)
-            FindObjectOfType<AudioManager>().Play("Move Knight");
+            FindObjectOfType<AudioManager>()?.Play("Move Knight");
         squad.MoveUnitsAndAutoAttack(targetPosition);
         //squad.MoveUnitsTo(targetPosition);
         //squad.AutoAttackClosestTargetAt(targetPosition);
@@ -90,9 +90,9 @@ public class Player : MonoBehaviour
         faction.AddAlly(entity);
 
         if (entity is WorkerController)
-            FindObjectOfType<AudioManager>().Play("Recruit Worker");
+            FindObjectOfType<AudioManager>()?.Play("Recruit Worker");
         if (entity is KnightController)
-            FindObjectOfType<AudioManager>().Play("Recruit Knight");
+            FindObjectOfType<AudioManager>()?.Play("Recruit Knight");
 
         entity.Died += OnEntityDied;
         entity.Died += e =>
@@ -105,9 +105,9 @@ public class Player : MonoBehaviour
     public void OnEntityDied(EntityController entity)
     {
         if (entity is UnitController)
-            FindObjectOfType<AudioManager>().Play("Unit Death");
+            FindObjectOfType<AudioManager>()?.Play("Unit Death");
         if (entity is BuildingController)
-            FindObjectOfType<AudioManager>().Play("Building Destruction");
+            FindObjectOfType<AudioManager>()?.Play("Building Destruction");
     }
 
     public void OnEntityBlueprinting(InstanceEventArgs args)
@@ -127,7 +127,7 @@ public class Player : MonoBehaviour
         if (entity is null)
             return;
         
-        FindObjectOfType<AudioManager>().Play("Building");
+        FindObjectOfType<AudioManager>()?.Play("Building");
         
         faction.AddAlly(entity);
         entity.Died += OnEntityDied;

@@ -69,7 +69,7 @@ public class WavesController : MonoBehaviour
 
         yield return AwaitWaveRoutine(delayInSeconds);
         
-        FindObjectOfType<AudioManager>().Play("Warning");
+        FindObjectOfType<AudioManager>()?.Play("Warning");
 
         WaveStarted?.Invoke();
         enemyController.ViewRadius = 1000.0f;

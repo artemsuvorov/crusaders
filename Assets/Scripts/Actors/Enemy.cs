@@ -43,7 +43,7 @@ public class Enemy : MonoBehaviour
 
     private void OnEnemyUnitDied(EntityController e)
     {
-        FindObjectOfType<AudioManager>().Play("Unit Death");
+        FindObjectOfType<AudioManager>()?.Play("Unit Death");
         UnitDied?.Invoke();
     }
 

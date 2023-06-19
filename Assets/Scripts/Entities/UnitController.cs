@@ -112,7 +112,7 @@ public abstract class UnitController : EntityController
         if (attacking || !Alive)
             yield break;
 
-        FindObjectOfType<AudioManager>().Play("Unit Attack");
+        FindObjectOfType<AudioManager>()?.Play("Unit Attack");
 
         attacking = true;
         StopMovement();
