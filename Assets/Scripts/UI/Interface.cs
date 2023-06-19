@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Interface : MonoBehaviour
@@ -16,6 +17,9 @@ public class Interface : MonoBehaviour
 
     private Transform barParentTansform;
 
+    private RectTransform menu;
+    private bool menuIsActive = false;
+
     private Text missionText;
     private Text goldText, woodText, stoneText;
     private RectTransform buildingsPanel, unitsPanel;
@@ -30,6 +34,8 @@ public class Interface : MonoBehaviour
     private void OnEnable()
     {
         barParentTansform = transform.Find("Bars");
+
+        menu = transform.Find("Menu Panel").GetComponent<RectTransform>();
 
         var gameUi = transform.Find("Game UI");
 
@@ -71,6 +77,12 @@ public class Interface : MonoBehaviour
             StartCoroutine(UpdateMissionInfoTextRoutine(s));
         missionController.WaveStarted += () => 
             missionText.text = $"The Wave is coming!";
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            ToggleMenu();
     }
 
     public void OnEntityCreated(InstanceEventArgs args)
@@ -171,6 +183,32 @@ public class Interface : MonoBehaviour
             sawmillButton.interactable = false;
         if (building is QuarryController)
             quarryButton.interactable = false;
+    }
+
+    private void ToggleMenu()
+    {
+        if (menuIsActive)
+        {
+            menu.localScale = Vector3.zero;
+            menuIsActive = false;
+            Time.timeScale = 1.0f;
+        } 
+        else
+        {
+            menu.localScale = Vector3.one;
+            menuIsActive = true;
+            Time.timeScale = 0.0f;
+        }
+    }
+
+    public void RestartMission()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void ExitToMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 
     private IEnumerator<YieldInstruction> UpdateMissionInfoTextRoutine(float delay)
