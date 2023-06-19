@@ -4,6 +4,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.Events;
 
+[Serializable]
 public enum Resource
 {
     Gold,
@@ -105,7 +106,7 @@ public class Resources : MonoBehaviour
 
     private void InitializeWithDefaultValues()
     {
-        values[Resource.Gold] = 100;
+        values[Resource.Gold] = 150;
         values[Resource.Wood] = 20;
         values[Resource.Stone] = 0;
     }

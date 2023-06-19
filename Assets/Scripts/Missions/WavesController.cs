@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+public enum UnitType
+{
+    Worker,
+    Knight
+}
+
 public enum SpawnSide
 {
     Left,
@@ -13,6 +19,7 @@ public enum SpawnSide
 
 public struct Wave
 {
+    public UnitType UnitType { get; private set; }
     public int EnemyCount { get; private set; }
     public SpawnSide SpawnSide { get; private set; }
 }
@@ -32,6 +39,9 @@ public class WavesController : MonoBehaviour
 
     [SerializeField]
     private int[] enemiesPerWave;
+
+    [SerializeField]
+    private UnitType[] unitTypes;
 
     [SerializeField]
     private SpawnSide[] spawnSides;
@@ -69,15 +79,19 @@ public class WavesController : MonoBehaviour
 
         yield return AwaitWaveRoutine(delayInSeconds);
         
+        FindObjectOfType<AudioManager>()?.Play("Warning");
+
         WaveStarted?.Invoke();
         enemyController.ViewRadius = 1000.0f;
 
         var enemyCount = enemiesPerWave[currentWaveIndex % enemiesPerWave.Length];
+        var unitType = unitTypes[currentWaveIndex % unitTypes.Length];
         var spawnSide = spawnSides[currentWaveIndex % spawnSides.Length];
-        yield return SpawnEnemiesRoutine(enemyCount, spawnSide);
+        yield return SpawnEnemiesRoutine(enemyCount, unitType, spawnSide);
     }
 
-    private IEnumerator SpawnEnemiesRoutine(int enemyCount, SpawnSide side)
+    private IEnumerator SpawnEnemiesRoutine(
+        int enemyCount, UnitType unitType, SpawnSide side)
     {
         if (enemyCount <= 0)
             yield break;
@@ -90,7 +104,7 @@ public class WavesController : MonoBehaviour
         for (var i = 0; i < enemyCount; i++)
         {
             var position = positions[i % positions.Count];
-            enemyController.SpawnEnemyUnit(position);
+            enemyController.SpawnEnemyUnit(unitType, position);
         }
     }
 

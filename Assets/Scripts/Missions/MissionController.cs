@@ -1,62 +1,26 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
-
-public enum MissionResult
-{
-    None,
-    Win,
-    Lose,
-}
-
-public abstract class Mission
-{
-    private MissionResult result = MissionResult.None;
-
-    public string Name { get; private set; }
-
-    public MissionResult Result
-    { 
-        get => result; 
-        protected set
-        {
-            result = value;
-            ResultChanged?.Invoke();
-        } 
-    }
-
-    public event UnityAction ResultChanged;
-
-    public abstract void OnEnemyDefeated();
-    public abstract void OnEnemyTownhallDestroyed();
-    public abstract void OnPlayerTownhallDestroyed();
-}
-
-public class DefenseMission : Mission
-{
-    public override void OnEnemyDefeated()
-    {
-        Result = MissionResult.Win;
-    }
-
-    public override void OnPlayerTownhallDestroyed()
-    {
-        Result = MissionResult.Lose;
-    }
-
-    public override void OnEnemyTownhallDestroyed() { }
-}
+using UnityEngine.SceneManagement;
 
 public class MissionController : MonoBehaviour
 {
     private WavesController wavesController;
-    
+    private DialogueController dialogueController;
+    private DialogueContainer dialogues;
+    private Mission mission;
+
     [SerializeField]
     private Player player;
 
     [SerializeField]
     private Enemy enemy;
 
-    private readonly Mission mission = new DefenseMission();
+    [SerializeField]
+    private GameObject gameUiPanel, dialoguePanel;
+
+    [SerializeField]
+    private MissionType type;
 
     public event UnityAction<float> WaveAwaited;
     public event UnityAction WaveStarted;
@@ -64,7 +28,16 @@ public class MissionController : MonoBehaviour
 
     private void Start()
     {
+        mission = type switch
+        {
+            MissionType.Offense => new OffenseMission(),
+            MissionType.Defense => new DefenseMission(),
+            _ => throw new ArgumentException(
+                $"Unexpected mission type {type}.")
+        };
+
         mission.ResultChanged += OnMissionResultChanged;
+        //SceneManager.LoadScene("AfterGameWin");
 
         if (player.Faction.HasTownhall)
             player.Faction.Townhall.Died += mission.OnPlayerTownhallDestroyed;
@@ -72,27 +45,56 @@ public class MissionController : MonoBehaviour
             enemy.Faction.Townhall.Died += mission.OnEnemyTownhallDestroyed;
 
         wavesController = enemy.GetComponent<WavesController>();
-        if (wavesController is null)
-            return;
+        if (wavesController is not null)
+        {
+            wavesController.WaveAwaited += (s) => WaveAwaited?.Invoke(s);
+            wavesController.WaveStarted += () => WaveStarted?.Invoke();
+            wavesController.WaveEnded += () => WaveEnded?.Invoke();
+            wavesController.AllWavesEnded += mission.OnEnemyDefeated;
+        }
 
-        wavesController.WaveAwaited += (s) => WaveAwaited?.Invoke(s);
-        wavesController.WaveStarted += () => WaveStarted?.Invoke();
-        wavesController.WaveEnded += () => WaveEnded?.Invoke();
-        wavesController.AllWavesEnded += mission.OnEnemyDefeated;
+        dialogueController = dialoguePanel.GetComponent<DialogueController>();
+        dialogues = GetComponent<DialogueContainer>();
+
+        dialogueController.DialogueStarted += OnDialogueStarted;
+        dialogueController.DialogueEnded += OnDialogueEnded;
+
+        dialogueController.StartDialogue(dialogues.StartMissionDialogue);
+    }
+
+    private void OnDialogueStarted()
+    {
+        gameUiPanel.SetActive(false);
+        dialoguePanel.SetActive(true);
+        Time.timeScale = 0.0f;
+    }
+
+    private void OnDialogueEnded()
+    {
+        gameUiPanel.SetActive(true);
+        dialoguePanel.SetActive(false);
+        Time.timeScale = 1.0f;
+
+        RedirectToNextSceneIfNeeded();
     }
 
     private void OnMissionResultChanged()
     {
         if (mission.Result == MissionResult.Win)
-        {
-            Time.timeScale = 0;
-            Debug.Log("You won!");
-        }
+            dialogueController.StartDialogue(dialogues.VictoryDialogue);
+            //SceneManager.LoadScene("AfterGameWin");
 
         if (mission.Result == MissionResult.Lose)
-        {
-            Time.timeScale = 0;
-            Debug.Log("You lost!");
-        }
+            dialogueController.StartDialogue(dialogues.DefeatDialogue);
+        //SceneManager.LoadScene("AfterGameLose");
+    }
+
+    private void RedirectToNextSceneIfNeeded()
+    {
+        if (mission.Result == MissionResult.Win)
+            SceneManager.LoadScene("AfterGameWin");
+
+        if (mission.Result == MissionResult.Lose)
+            SceneManager.LoadScene("AfterGameLose");
     }
 }

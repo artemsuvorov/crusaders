@@ -5,7 +5,28 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/MissionBase.unity
+  - enabled: 0
+    path: Assets/Scenes/Missions/MissionBase.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/Missions/Aintab.unity
+    guid: ebb907ae19719c0469f885d51aaa90fd
+  - enabled: 1
+    path: Assets/Scenes/Missions/Nicopolis.unity
+    guid: fea6339a9a91d6c49810df8d70db382f
+  - enabled: 1
+    path: Assets/Scenes/Missions/Harim.unity
+    guid: 6252850bee446eb4e87210dabeecb9be
+  - enabled: 1
+    path: Assets/Scenes/UI/Menu.unity
+    guid: 52f7ad6a8fd2fa84db9cc3c84333b154
+  - enabled: 1
+    path: Assets/Scenes/UI/SelectLevel.unity
+    guid: 27942e57c1029b348a38d5ecddb009df
+  - enabled: 1
+    path: Assets/Scenes/UI/AfterGameWin.unity
+    guid: 81dd7f59815214a608c3084efcc9a147
+  - enabled: 1
+    path: Assets/Scenes/UI/AfterGameLose.unity
+    guid: 89b3f753d42164893899c2c9ddda6e6b
   m_configObjects: {}

@@ -17,30 +17,48 @@ public class HealthEventArgs
 
 public class Health
 {
-    private float value = 100;
+    private float max = 100, current = 100;
 
-    public float Max { get; set; } = 100;
-
-    public float Value
+    public float Max
     {
-        get => value;
-        set => this.value = Mathf.Min(Mathf.Max(0, value), Max);
+        get => max;
+        set
+        {
+            max = Mathf.Max(0, value);
+            current = Mathf.Min(current, max);
+        }
+    }
+
+    public float Current
+    {
+        get => current;
+        set => current = Mathf.Min(Mathf.Max(0, value), Max);
+    }
+
+    public Health(float amount)
+    {
+        Max = amount;
+        Current = amount;
     }
 }
 
-public class EntityController : MonoBehaviour
+public abstract class EntityController : MonoBehaviour
 {
-    private readonly Health health = new();
     private Collider2D entityCollider;
 
-    public float Health => health.Value;
-    public bool Alive => Health > 0;
+    protected abstract Health Health { get; }
+    public abstract Cost Cost { get; }
+
+    public FactionName FactionName { get; set; }
+
+    public float HealthPoints => Health.Current;
+    public bool Alive => HealthPoints > 0;
 
     public Vector2 Position => transform.position;
     public Vector2 Size => entityCollider.bounds.size;
 
     public event UnityAction<HealthEventArgs> HealthChanged;
-    public event UnityAction Died;
+    public event UnityAction<EntityController> Died;
 
     private void OnEnable()
     {
@@ -55,8 +73,8 @@ public class EntityController : MonoBehaviour
 
     public virtual void TakeDamage(float amount)
     {
-        health.Value -= amount;
-        var args = new HealthEventArgs(health.Value, health.Max);
+        Health.Current -= amount;
+        var args = new HealthEventArgs(Health.Current, Health.Max);
         HealthChanged?.Invoke(args);
     }
 
@@ -68,6 +86,6 @@ public class EntityController : MonoBehaviour
     private void OnHealthChanged(HealthEventArgs arg)
     {
         if (arg.Health <= 0)
-            Died?.Invoke();
+            Died?.Invoke(this);
     }
 }

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 
 public enum FactionName
 {
+    None,
     English,
     French,
     German,
@@ -25,7 +26,8 @@ public class Faction
     public void AddAlly(EntityController entity)
     {
         entities.Add(entity);
-        entity.Died += () => entities.Remove(entity);
+        entity.Died += e => entities.Remove(entity);
+        entity.FactionName = Name;
 
         var townhall = entity.GetComponent<TownhallController>();
         if (townhall is not null)

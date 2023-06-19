@@ -1,16 +1,9 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class UnitController : EntityController
+public abstract class UnitController : EntityController
 {
-    [SerializeField, Range(1.0f, 10.0f)]
-    private float speed = 1.0f;
-
-    [SerializeField, Range(0.0f, 100.0f)]
-    private float damage = 10.0f;
-
     private bool attacking = false;
 
     private Vector3 targetPosition;
@@ -19,6 +12,8 @@ public class UnitController : EntityController
     private GameObject highlight;
     private NavMeshAgent agent;
     private Animator animator;
+
+    public abstract float Damage { get; protected set; }
 
     public bool Selectable { get; set; } = true;
 
@@ -66,7 +61,7 @@ public class UnitController : EntityController
 
     private void Awake()
     {
-        Died += () => StopMovement();
+        Died += e => StopMovement();
 
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
@@ -117,11 +112,13 @@ public class UnitController : EntityController
         if (attacking || !Alive)
             yield break;
 
+        FindObjectOfType<AudioManager>()?.Play("Unit Attack");
+
         attacking = true;
         StopMovement();
         yield return new WaitForSeconds(0.5f);
 
-        target.TakeDamage(damage);
+        target.TakeDamage(Damage);
         yield return new WaitForSeconds(0.4f);
         attacking = false;
     }
@@ -138,7 +135,7 @@ public class UnitController : EntityController
             return;
         }
 
-        animator.SetFloat("Speed", speed);
+        animator.SetFloat("Speed", 1.0f);
 
         var directionX = Mathf.RoundToInt(direction.x);
         var directionY = Mathf.RoundToInt(direction.y);

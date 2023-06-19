@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
@@ -9,7 +10,10 @@ public class Enemy : MonoBehaviour
     private Instantiator instantiator;
 
     [SerializeField]
-    private GameObject unitPrefab;
+    private GameObject workerPrefab, knightPrefab;
+
+    [SerializeField]
+    private Transform factionParent;
 
     private readonly Faction faction;
     private readonly HashSet<UnitController> units;
@@ -27,32 +31,48 @@ public class Enemy : MonoBehaviour
         units = new HashSet<UnitController>();
     }
 
-    public void SpawnEnemyUnit(Vector2 position)
+    public void SpawnEnemyUnit(UnitType type, Vector2 position)
     {
-        var instance = instantiator.Instantiate(unitPrefab, position);
+        var prefab = type switch
+        {
+            UnitType.Worker => workerPrefab,
+            UnitType.Knight => knightPrefab,
+            _ => throw new ArgumentException(
+                $"Unexpected Unit type '{type}'.")
+        };
+
+        var instance = instantiator.Instantiate(prefab, position);
         var unit = instance.GetComponent<UnitController>();
         faction.AddAlly(unit);
+
         unit.Selectable = false;
-        unit.Died += () => UnitDied?.Invoke();
+        unit.Died += OnEnemyUnitDied;
         units.Add(unit);
+    }
+
+    private void Awake()
+    {
+        LoadMissionEntities();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K))
-            SpawnEnemyUnit(Vector2.zero);
-
+        //if (Input.GetKeyDown(KeyCode.K))
+        //    SpawnEnemyUnit(Vector2.zero);
         foreach (var unit in units)
-        {
-            if (!unit.Alive)
-                continue;
-            var entities = GetVisibleEntities(unit);
-            var closest = GetClosestHostileEntity(unit, entities);
-            if (closest is null)
-                continue;
-            unit.MoveTo(closest);
-            unit.SelectAttackTarget(closest);
-        }
+            MoveUnitAndAttackClosest(unit);
+    }
+
+    private void MoveUnitAndAttackClosest(UnitController unit)
+    {
+        if (!unit.Alive)
+            return;
+        var entities = GetVisibleEntities(unit);
+        var closest = GetClosestHostileEntity(unit, entities);
+        if (closest is null)
+            return;
+        unit.MoveTo(closest);
+        unit.SelectAttackTarget(closest);
     }
 
     private IEnumerable<EntityController> GetVisibleEntities(UnitController unit)
@@ -80,5 +100,32 @@ public class Enemy : MonoBehaviour
         }
 
         return closest;
+    }
+
+    private void LoadMissionEntities()
+    {
+        foreach (Transform child in factionParent)
+        {
+            var entity = child.GetComponent<EntityController>();
+            if (entity is null)
+                continue;
+            faction.AddAlly(entity);
+
+            if (entity is BuildingController building)
+                building.Died += e =>
+                    FindObjectOfType<AudioManager>()?.Play("Building Destruction");
+
+            if (entity is not UnitController unit)
+                continue;
+            unit.Selectable = false;
+            unit.Died += OnEnemyUnitDied;
+            units.Add(unit);
+        }
+    }
+
+    private void OnEnemyUnitDied(EntityController e)
+    {
+        FindObjectOfType<AudioManager>()?.Play("Unit Death");
+        UnitDied?.Invoke();
     }
 }
