@@ -1,0 +1,1895 @@
+fileFormatVersion: 2
+guid: 442d53b4be13a0b4595802953af21e0c
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: knight_attack_0
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 1032
+        width: 136
+        height: 148
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4e4e69c4edf8554792748f96879c318
+      internalID: -1853114589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_1
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 1032.5
+        width: 135.5
+        height: 147.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21b1c930706df2d42aaab61a080ffdab
+      internalID: 2071084847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_2
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 1032.5
+        width: 135.5
+        height: 147.5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 324d3edb178277742b43c967c67c5c9f
+      internalID: -578748176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_3
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 1032
+        width: 134
+        height: 148
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c081b5b75ad52a54d9078465b8b58b84
+      internalID: 2050853907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_4
+      rect:
+        serializedVersion: 2
+        x: 610
+        y: 1032
+        width: 139
+        height: 148
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1565f1d95b0e9a4eafa3e53623abb2c
+      internalID: -2031253306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_5
+      rect:
+        serializedVersion: 2
+        x: 757
+        y: 1032
+        width: 141
+        height: 148
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e661e46369a5526409d6da47efd3ae06
+      internalID: 1929611182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_6
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 1032
+        width: 129
+        height: 148
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9db9f18c7129bbc4eba08aee19351794
+      internalID: 215209557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_7
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 1032
+        width: 139
+        height: 148
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e45c752bf6c9b841bd8de3a5d2ab572
+      internalID: 1778498101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_8
+      rect:
+        serializedVersion: 2
+        x: 1215
+        y: 1032
+        width: 118
+        height: 148
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e466db52ae3f67449a1b2fed7718df94
+      internalID: -1647371274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_9
+      rect:
+        serializedVersion: 2
+        x: 1362
+        y: 1032
+        width: 118
+        height: 148
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab7a393066309c44e87dda73b2700a11
+      internalID: -1354673879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_10
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 885.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0d67173a72e812459e505b9983b2c76
+      internalID: -1835676109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_11
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 885.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39d9f3f8393fef044ba30c407ec844a9
+      internalID: -877633337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_12
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 885.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3bbc3cf994b8cf4ca4d58b2dec48322
+      internalID: 1024154449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_13
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 885.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10749e08a9487a74286e8ef54f85ae9b
+      internalID: -1008500639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_14
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 885.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12158bd79fc854844bd487700f31f99b
+      internalID: 663060800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_15
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 885.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab71b93910dbf0d41a8d45178943b9a4
+      internalID: 426176998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_16
+      rect:
+        serializedVersion: 2
+        x: 895
+        y: 885.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8d9f80489aef76498f82751dc4e5d85
+      internalID: -1686607532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_17
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 885.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1fe2d721f01c4f429871d5806bc429a
+      internalID: 1211449777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_18
+      rect:
+        serializedVersion: 2
+        x: 1185
+        y: 885.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5ac98d3af639214d83ae89f8db278fe
+      internalID: 1769485145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_19
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 885.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c4499d6c6b1e8648a82199c4a86191b
+      internalID: 1646479971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_20
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 738.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ab583fe192615a4791921b1b6561177
+      internalID: -1191751380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_21
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 738.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c6cbfaa0189b394da31266b8f9ed391
+      internalID: -940078249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_22
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 738.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d76a19b229ddaa4d956fb54606422c1
+      internalID: -597830355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_23
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 738.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb5947c4126a4d74d99636d4585be7ae
+      internalID: 204992065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_24
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 738.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebced4cbed4fb4b469860fb83a74ba45
+      internalID: 1252477845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_25
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 738.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a6db81e3b2885a428cdd96970a28146
+      internalID: 368719992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_26
+      rect:
+        serializedVersion: 2
+        x: 895
+        y: 738.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ae1c1b4c8ab0484fa5010031633aabf
+      internalID: -297687248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_27
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 738.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f5dc686a7ec06b4d844349fe0623d83
+      internalID: -1941095408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_28
+      rect:
+        serializedVersion: 2
+        x: 1185
+        y: 738.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fd6e9cae3773bb4080652bb377f8903
+      internalID: -828072269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_29
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 738.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6836ed331c676a04daea4017c77bc597
+      internalID: 830177642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_30
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 591.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69e81ff56cb54fb458e5466a22bdfab8
+      internalID: 792733819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_31
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 591.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47aeccb5613ad644ca7965a83058b8c4
+      internalID: -417195091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_32
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 591.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62682c7aafd3abb4691ce771c995c195
+      internalID: 59893494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_33
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 591.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3e03a2773e036242862e68d59897f2e
+      internalID: -626979401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_34
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 591.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 041dcba5347bde94b97a19127820fd30
+      internalID: -175888501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_35
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 591.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ce2f7e35402a394ba1abdab057959b3
+      internalID: 1707798839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_36
+      rect:
+        serializedVersion: 2
+        x: 895
+        y: 591.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f92efc6d4b96cc4cbfd3e92a4edc530
+      internalID: 231661291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_37
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 591.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71422d09dbf0284438fd2127a4b28c9e
+      internalID: -1964589261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_38
+      rect:
+        serializedVersion: 2
+        x: 1185
+        y: 591.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a223c2e96f56e774caf6dbe114453a4f
+      internalID: 973703689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_39
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 591.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3af756dbf508e6f418e93578f9507d98
+      internalID: -1749373446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_40
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 444.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: accd80c801790d849993482c14d833fd
+      internalID: -1411790634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_41
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 444.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7336261f2ea3414d963cfc0e5e0fc63
+      internalID: -1128534710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_42
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 444.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f2d7b1615165c64a990c004ef0e6f09
+      internalID: 1395452701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_43
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 444.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38ec54b07b566bd4e9e25d156f02f7ff
+      internalID: -1695704960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_44
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 444.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 435e34ef65e262340b33366752f6faaa
+      internalID: -1753888873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_45
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 444.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04b87317a4c24e7409a1a3c05025211e
+      internalID: 305450223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_46
+      rect:
+        serializedVersion: 2
+        x: 895
+        y: 444.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 894a6963612328547b2081922e249f2b
+      internalID: -1019709297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_47
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 444.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a5db424cf560cf4d96ef9ac665f031c
+      internalID: 92392593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_48
+      rect:
+        serializedVersion: 2
+        x: 1185
+        y: 444.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 969a42329bf4f2b4da24fb632cb971b1
+      internalID: -222591265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_49
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 444.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2189e0140ddf5b34eb412d69d6bf4c56
+      internalID: 1721995185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_50
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 297.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a666f7f4aac17ab48a83babc61c13c2e
+      internalID: 376723094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_51
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 297.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 337f1a83919a5ef4e8305f0441f7537d
+      internalID: 643794636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_52
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 297.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ae91ca6841c7bb438598459be96a82e
+      internalID: -52618257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_53
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 297.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74fd00d2799f3a04cb703e5384a4feeb
+      internalID: 1453063272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_54
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 297.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41cb6966666f19b4685b9b8b9140c594
+      internalID: 1044276565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_55
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 297.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c19f414f6a5a3ef44a8335ddd9c15870
+      internalID: 1610830387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_56
+      rect:
+        serializedVersion: 2
+        x: 895
+        y: 297.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b20cfadfa79c0b14487c0beff9868652
+      internalID: -946669362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_57
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 297.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 424f819bcae3e2947bd5f9ee5c62bccd
+      internalID: 826293158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_58
+      rect:
+        serializedVersion: 2
+        x: 1185
+        y: 297.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a367dddd8a50c224ca3dc1fcc1374e69
+      internalID: -988938950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_59
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 297.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa38c1cadc627fe4d9b9622850adc726
+      internalID: 1092868170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_60
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 150.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da5455b09e6aa8a4785c7b0aa6b4f6f5
+      internalID: 2033596305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_61
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 150.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 640309c6ad1627648a669b14af5123e1
+      internalID: 1040175878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_62
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 150.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbcd66ca366a8d1449a878252fd4319c
+      internalID: 795005418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_63
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 150.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87c77b54226cfb14d84ed56a95101c24
+      internalID: -63693654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_64
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 150.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88766f0cdbef1894988d327053a1c137
+      internalID: -1406289843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_65
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 150.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c6aa22387e61114fb5df0f88f8302ef
+      internalID: -1453415105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_66
+      rect:
+        serializedVersion: 2
+        x: 895
+        y: 150.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea3f5a46f3f28a44aad078751dd31439
+      internalID: -928939614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_67
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 150.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43932b13b8ddeb24d937160d3c370f3c
+      internalID: -68372059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_68
+      rect:
+        serializedVersion: 2
+        x: 1185
+        y: 150.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ff0486475a55ab4ab4fa12743ccb926
+      internalID: -395657603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_69
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 150.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0717e56232861c47b911915ec1ec15d
+      internalID: -731668090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_70
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 3.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b41f0a35d4a01264f8cbc25bd0378af8
+      internalID: 2102099484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_71
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 3.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d52d13ad69c8d14a99d3186da60599f
+      internalID: -63080561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_72
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 3.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7016f9ae169edf4096033704b101055
+      internalID: -1939937167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_73
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 3.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a758286ac14f3a94d80f818866c62273
+      internalID: -1857694471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_74
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 3.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84de42cca1f0c944ca5703fb120bca46
+      internalID: 1367397199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_75
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 3.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47703822ebee14146b3dc7f85d745325
+      internalID: 660129793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_76
+      rect:
+        serializedVersion: 2
+        x: 895
+        y: 3.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35b34670a5e62e04d97435c721b4926b
+      internalID: -970955498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_77
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 3.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d88ecbee9802d934eb9d500191d6d749
+      internalID: -66685537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_78
+      rect:
+        serializedVersion: 2
+        x: 1185
+        y: 3.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ef2af1a7e28f7243b8120e98f533aee
+      internalID: -349717219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_attack_79
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 3.5
+        width: 135.5
+        height: 147.5
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6969481f990d9ba49ac9a6d1edc2fb17
+      internalID: 2963476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      knight_attack_0: -1853114589
+      knight_attack_1: 2071084847
+      knight_attack_10: -1835676109
+      knight_attack_11: -877633337
+      knight_attack_12: 1024154449
+      knight_attack_13: -1008500639
+      knight_attack_14: 663060800
+      knight_attack_15: 426176998
+      knight_attack_16: -1686607532
+      knight_attack_17: 1211449777
+      knight_attack_18: 1769485145
+      knight_attack_19: 1646479971
+      knight_attack_2: -578748176
+      knight_attack_20: -1191751380
+      knight_attack_21: -940078249
+      knight_attack_22: -597830355
+      knight_attack_23: 204992065
+      knight_attack_24: 1252477845
+      knight_attack_25: 368719992
+      knight_attack_26: -297687248
+      knight_attack_27: -1941095408
+      knight_attack_28: -828072269
+      knight_attack_29: 830177642
+      knight_attack_3: 2050853907
+      knight_attack_30: 792733819
+      knight_attack_31: -417195091
+      knight_attack_32: 59893494
+      knight_attack_33: -626979401
+      knight_attack_34: -175888501
+      knight_attack_35: 1707798839
+      knight_attack_36: 231661291
+      knight_attack_37: -1964589261
+      knight_attack_38: 973703689
+      knight_attack_39: -1749373446
+      knight_attack_4: -2031253306
+      knight_attack_40: -1411790634
+      knight_attack_41: -1128534710
+      knight_attack_42: 1395452701
+      knight_attack_43: -1695704960
+      knight_attack_44: -1753888873
+      knight_attack_45: 305450223
+      knight_attack_46: -1019709297
+      knight_attack_47: 92392593
+      knight_attack_48: -222591265
+      knight_attack_49: 1721995185
+      knight_attack_5: 1929611182
+      knight_attack_50: 376723094
+      knight_attack_51: 643794636
+      knight_attack_52: -52618257
+      knight_attack_53: 1453063272
+      knight_attack_54: 1044276565
+      knight_attack_55: 1610830387
+      knight_attack_56: -946669362
+      knight_attack_57: 826293158
+      knight_attack_58: -988938950
+      knight_attack_59: 1092868170
+      knight_attack_6: 215209557
+      knight_attack_60: 2033596305
+      knight_attack_61: 1040175878
+      knight_attack_62: 795005418
+      knight_attack_63: -63693654
+      knight_attack_64: -1406289843
+      knight_attack_65: -1453415105
+      knight_attack_66: -928939614
+      knight_attack_67: -68372059
+      knight_attack_68: -395657603
+      knight_attack_69: -731668090
+      knight_attack_7: 1778498101
+      knight_attack_70: 2102099484
+      knight_attack_71: -63080561
+      knight_attack_72: -1939937167
+      knight_attack_73: -1857694471
+      knight_attack_74: 1367397199
+      knight_attack_75: 660129793
+      knight_attack_76: -970955498
+      knight_attack_77: -66685537
+      knight_attack_78: -349717219
+      knight_attack_79: 2963476
+      knight_attack_8: -1647371274
+      knight_attack_9: -1354673879
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,839 @@
+fileFormatVersion: 2
+guid: 01fa190d52c3aac4faa74001103e8b8f
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: knight_idle_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1032.5
+        width: 148
+        height: 147.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4b31b3c540fc8f4c872bd417a7d0ce3
+      internalID: 116729292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_idle_1
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 1032.5
+        width: 148
+        height: 147.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e410002cd12ef34291f6a15da618f44
+      internalID: -2132191905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_idle_2
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 1032.5
+        width: 148
+        height: 147.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50d888f52a1b63a488ac61f1551fe0f2
+      internalID: 722526742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_idle_3
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 1032.5
+        width: 148
+        height: 147.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06d20f34162c3b640a431c41ed67788d
+      internalID: 169171351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_idle_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 885.5
+        width: 148
+        height: 147.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e962ef3bd4719194aabcbc020af04dc3
+      internalID: 1371002241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_idle_5
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 885.5
+        width: 148
+        height: 147.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06cbf421ead0bdd459eb431b03fa504e
+      internalID: 1140827063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_idle_6
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 885.5
+        width: 148
+        height: 147.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43fc0f09787de684b9914404a40c07ca
+      internalID: -1700139930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_idle_7
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 885.5
+        width: 148
+        height: 147.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b974f79432267ea49901f340016c17cb
+      internalID: 2048871745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_idle_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 738.5
+        width: 148
+        height: 147.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 421462fd59fa3c542adce0dbfdd2f535
+      internalID: -1574805508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_idle_9
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 738.5
+        width: 148
+        height: 147.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a1d750f750999944955aa2adb5f1062
+      internalID: -746310965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_idle_10
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 738.5
+        width: 148
+        height: 147.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf92ce048350b79449c3bb2cc3f2888d
+      internalID: 1887209663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_idle_11
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 738.5
+        width: 148
+        height: 147.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9af20bb74ad051a43ba7787ebbe951e1
+      internalID: 1175385549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_idle_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 591.5
+        width: 148
+        height: 147.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00742ebd674e20245bdd74662160c680
+      internalID: 1852038749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_idle_13
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 591.5
+        width: 148
+        height: 147.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b09f49509bb31a3488e41ffe9f24b64b
+      internalID: 1651048903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_idle_14
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 591.5
+        width: 148
+        height: 147.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 271c8126716eb2243ab68be32cd8775e
+      internalID: 1962369936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_idle_15
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 591.5
+        width: 148
+        height: 147.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6583e96e54541654fa6d00ca9bdd824c
+      internalID: -1942903543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_idle_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 444.5
+        width: 148
+        height: 147.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6e960d7512d71e45af8bdb263a64b75
+      internalID: -681142906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_idle_17
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 444.5
+        width: 148
+        height: 147.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c8d9c756b2cf474fb31b4c4316879df
+      internalID: 2015353069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_idle_18
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 444.5
+        width: 148
+        height: 147.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3948cf1abc25ea41a98c60e7b73ba73
+      internalID: -556451853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_idle_19
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 444.5
+        width: 148
+        height: 147.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abe4d9115154e334a80ace3b013c518e
+      internalID: -144831763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_idle_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 297.5
+        width: 148
+        height: 147.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4408713b4f9a134cade1008ef11de76
+      internalID: -773757370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_idle_21
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 297.5
+        width: 148
+        height: 147.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 620a2454af554c2428c3313aadc8652c
+      internalID: -715777772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_idle_22
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 297.5
+        width: 148
+        height: 147.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62d152c22c52776468928a4bfab1a305
+      internalID: 1814197469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_idle_23
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 297.5
+        width: 148
+        height: 147.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1bc28cedf21be34caae7585aaadcef5
+      internalID: 498062231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_idle_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 150.5
+        width: 148
+        height: 147.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27bedf7883d84ea45a6eed71ccfece78
+      internalID: 1411359343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_idle_25
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 150.5
+        width: 148
+        height: 147.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 374074d286978154a9dcea3b1aebb52f
+      internalID: 1041373748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_idle_26
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 150.5
+        width: 148
+        height: 147.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1a33b41f2f2b854ca859982df04e253
+      internalID: 127584690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_idle_27
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 150.5
+        width: 148
+        height: 147.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f45381ec1a759c246b48c02de7e47a44
+      internalID: -530478878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_idle_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3.5
+        width: 148
+        height: 147.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61fad18d7a795494abc7e2fd48c8943a
+      internalID: -1518994473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_idle_29
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 3.5
+        width: 148
+        height: 147.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 632069b22c3432d4c9674bd5e8017140
+      internalID: 1474507294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_idle_30
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 3.5
+        width: 148
+        height: 147.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7343f90885783ee4a8e656553976eaf8
+      internalID: 611415754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: knight_idle_31
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 3.5
+        width: 148
+        height: 147.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4218359f738e2d34a8c9f1b4fa63cc73
+      internalID: 591752198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      knight_idle_0: 116729292
+      knight_idle_1: -2132191905
+      knight_idle_10: 1887209663
+      knight_idle_11: 1175385549
+      knight_idle_12: 1852038749
+      knight_idle_13: 1651048903
+      knight_idle_14: 1962369936
+      knight_idle_15: -1942903543
+      knight_idle_16: -681142906
+      knight_idle_17: 2015353069
+      knight_idle_18: -556451853
+      knight_idle_19: -144831763
+      knight_idle_2: 722526742
+      knight_idle_20: -773757370
+      knight_idle_21: -715777772
+      knight_idle_22: 1814197469
+      knight_idle_23: 498062231
+      knight_idle_24: 1411359343
+      knight_idle_25: 1041373748
+      knight_idle_26: 127584690
+      knight_idle_27: -530478878
+      knight_idle_28: -1518994473
+      knight_idle_29: 1474507294
+      knight_idle_3: 169171351
+      knight_idle_30: 611415754
+      knight_idle_31: 591752198
+      knight_idle_4: 1371002241
+      knight_idle_5: 1140827063
+      knight_idle_6: -1700139930
+      knight_idle_7: 2048871745
+      knight_idle_8: -1574805508
+      knight_idle_9: -746310965
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
